@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kevin Lee Photography</title>
+<meta name="description" content="Photographs by Kevin Lee: the Nevada desert, the California coast, Kauai and Crater Lake.">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Geist:wght@400&display=swap">
+<style>
+/* Layout: one fluid sheet, max 1200px. Desktop 48px gutter, tablet (under 1200) 32px,
+   phone (under 810) 24px. Hairline rules divide sections; the photographs carry the colour. */
+:root {
+  --paper: #f5f3ef; --ink: #1f1d1a; --soft: #6b6863; --rule: #dbd8d2; --field: #8a8782; --error: #8f2d1c;
+  --serif: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+  --sans: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --gutter: 48px; --gap: 24px;
+}
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+*, *::before, *::after { box-sizing: border-box; }
+h1, h2, h3, p, figure { margin: 0; font-weight: 400; }
+h1, h2, h3 { text-wrap: balance; }
+a { color: inherit; text-decoration: none; transition: color .2s; }
+a:hover { color: var(--soft); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+button { font: inherit; color: inherit; }
+
+.sheet { max-width: 1200px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column;
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+#app { flex: 1; display: flex; flex-direction: column; }
+.view { flex: 1; display: flex; flex-direction: column; animation: rise .5s cubic-bezier(.2,.7,.2,1); }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.serif { font-family: var(--serif); letter-spacing: -0.01em; }
+.label { font-size: 11px; line-height: 16px; letter-spacing: 0.03em; text-transform: uppercase; }
+.soft { color: var(--soft); }
+.ph { overflow: hidden; background: var(--rule); min-width: 0; }
+.rule-top { border-top: 1px solid var(--rule); }
+.rule-bottom { border-bottom: 1px solid var(--rule); }
+.underlined { display: inline-block; padding-bottom: 3px; border-bottom: 1px solid var(--rule); }
+a:hover .underlined, a.underlined:hover { border-color: var(--ink); color: var(--ink); }
+a .ph img { transition: transform 1.2s cubic-bezier(.2,.6,.2,1); }
+a:hover .ph img { transform: scale(1.02); }
+
+/* masthead */
+.mast { display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; padding-block: 22px 20px; border-bottom: 1px solid var(--rule); }
+.mast .name { font-size: 26px; line-height: 32px; padding-block: 6px; }
+.nav { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.nav a { padding-block: 11px; }
+.nav a[aria-current="page"] { border-bottom: 1px solid var(--ink); padding-bottom: 10px; }
+
+/* shared blocks */
+.cap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: 14px; }
+.cap .t { font-size: 26px; line-height: 33px; }
+.eyebrow-title { display: flex; flex-direction: column; gap: 8px; }
+.big { font-size: 46px; line-height: 1.1; }
+.facts { display: flex; flex-direction: column; border-bottom: 1px solid var(--rule); }
+.facts a { border-bottom: 1px solid var(--rule); padding-bottom: 2px; } .facts a:hover { border-color: var(--ink); color: var(--ink); }
+.facts > div { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 24px; flex-wrap: wrap; padding-block: 16px; border-top: 1px solid var(--rule); }
+.foot { margin-top: auto; display: flex; justify-content: space-between; align-items: baseline; gap: 4px 24px; flex-wrap: wrap; border-top: 1px solid var(--rule); padding-block: 18px 22px; }
+.foot > div { display: flex; align-items: baseline; gap: 12px 24px; flex-wrap: wrap; }
+.foot a { display: inline-block; padding-block: 12px; }
+.foot .inq { gap: 12px; }
+
+/* home */
+.intro { display: grid; grid-template-columns: 59fr 41fr; padding-block: 64px 58px; align-items: start; }
+.intro .side { padding-top: 6px; display: grid; gap: 16px; max-width: 290px; }
+.pair { display: grid; grid-template-columns: 652fr 404fr; gap: 48px; align-items: start; }
+.pair .b { margin-top: 120px; }
+.r-lead { aspect-ratio: 652 / 479; } .r-tall { aspect-ratio: 404 / 422; } .r-wide { aspect-ratio: 1104 / 590; }
+.wide { display: block; margin-top: 52px; }
+.about-strip { display: grid; grid-template-columns: 38fr 62fr; padding-block: 84px 72px; align-items: start; }
+.about-strip h2 { font-size: 36px; line-height: 1.15; }
+.about-strip .body { display: grid; gap: 18px; max-width: 684px; }
+.about-strip .label { padding-top: 6px; }
+
+/* gallery and prints */
+.ghead { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px 48px; flex-wrap: wrap; padding-block: 62px 40px; }
+.ghead p.lede { max-width: 310px; padding-top: 12px; }
+.cards { display: grid; gap: 40px var(--gap); border-top: 1px solid var(--rule); padding-block: 18px 56px; }
+.cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.card { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.card .ph { width: 100%; aspect-ratio: 3 / 2; }
+.cards.three .card .ph { aspect-ratio: 4 / 3; }
+.card .label { margin-top: 18px; }
+.card h3 { font-size: 26px; line-height: 33px; margin-top: 8px; }
+.card .underlined { margin-top: 18px; }
+
+/* series */
+.crumb { padding-block: 28px 18px; }
+.crumb a, .back a { display: inline-block; padding-block: 12px; }
+.shead { display: grid; grid-template-columns: 446fr 658fr; align-items: start; padding-bottom: 36px; border-bottom: 1px solid var(--rule); }
+.shead .txt { padding: 26px 40px 0 0; display: flex; flex-direction: column; }
+.shead h1 { font-size: 52px; line-height: 1.04; margin-top: 12px; max-width: 320px; }
+.shead .lede { margin-top: 20px; max-width: 290px; }
+.shead .meta { margin-top: 16px; max-width: 320px; }
+.shot { display: block; width: 100%; padding: 0; border: 0; border-radius: 0; background: var(--rule); cursor: zoom-in; overflow: hidden; }
+.shot img { transition: transform 1.2s cubic-bezier(.2,.6,.2,1); }
+.shot:hover img { transform: scale(1.02); }
+.shead .shot { aspect-ratio: 3 / 2; }
+.more-h { font-size: 30px; line-height: 36px; padding-block: 28px 22px; }
+.more { display: flex; flex-direction: column; gap: var(--gap); padding-bottom: 36px; border-bottom: 1px solid var(--rule); }
+.row { display: grid; gap: var(--gap); }
+.row.w1 { grid-template-columns: 1fr; } .row.w1 .shot { aspect-ratio: 1104 / 520; }
+.row.w2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .row.w3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.row.w2 .shot, .row.w3 .shot { aspect-ratio: 3 / 2; }
+.row.t3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .row.t4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.row.t3 .shot, .row.t4 .shot { aspect-ratio: var(--tall, 2 / 3); }
+.back { padding-block: 14px 34px; }
+
+/* editorial */
+.ehead { text-align: center; padding-block: 48px 44px; display: grid; gap: 12px; justify-items: center; }
+.efirst { display: block; padding-bottom: 48px; border-bottom: 1px solid var(--rule); }
+.r-ewide { aspect-ratio: 1104 / 490; }
+.erow { display: grid; align-items: center; padding-block: 48px; border-bottom: 1px solid var(--rule); }
+.erow.text-first { grid-template-columns: 433fr 671fr; } .erow.text-first .ph { aspect-ratio: 3 / 2; }
+.erow.photo-first { grid-template-columns: 442fr 662fr; } .erow.photo-first .ph { aspect-ratio: 4 / 5; } .erow.photo-first .txt { padding-left: 64px; }
+.erow .txt { display: grid; gap: 10px; }
+.erow h2 { font-size: 36px; line-height: 42px; }
+.erow p.lede { max-width: 260px; }
+.eabout { display: grid; grid-template-columns: 584fr 520fr; align-items: end; gap: 24px; padding-block: 62px 60px; }
+.eabout h2 { font-size: 36px; line-height: 1.1; margin-top: 14px; max-width: 360px; }
+.eabout p { max-width: 390px; padding-bottom: 6px; }
+
+/* about, prints details, contact */
+.phead { padding-block: 62px 48px; }
+.r-about { aspect-ratio: 1104 / 490; }
+.split { display: grid; grid-template-columns: 38fr 62fr; padding-block: 64px; align-items: start; }
+.split > .label { padding-top: 3px; }
+.split .body { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.split .body p { max-width: 520px; }
+.split .facts { margin-top: 22px; }
+.cta { display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; padding-block: 56px; }
+.cta h2 { font-size: 36px; line-height: 42px; }
+.cta a { padding-block: 11px; }
+.contact { display: grid; grid-template-columns: 38fr 51fr; justify-content: space-between; gap: 40px 11%; align-items: start; padding-block: 48px 72px; }
+.contact .side { display: flex; flex-direction: column; gap: 28px; max-width: 300px; }
+form { display: flex; flex-direction: column; gap: 28px; margin: 0; }
+.field { display: flex; flex-direction: column; }
+.field input, .field select, .field textarea { width: 100%; padding: 12px 0; border: 0; border-bottom: 1px solid var(--field); border-radius: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; line-height: 1.5; }
+.field textarea { resize: vertical; }
+.btn { align-self: flex-start; padding: 14px 28px; min-height: 44px; border: 1px solid var(--ink); border-radius: 0; background: var(--ink); color: var(--paper); cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.err { color: var(--error); }
+.sent { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.sent h2 { font-size: 36px; line-height: 42px; }
+
+/* photo viewer */
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(245,243,239,0.98); display: flex; flex-direction: column; animation: lbfade .28s ease-out;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(var(--gutter), env(safe-area-inset-right, 0px)) max(18px, env(safe-area-inset-bottom, 0px)) max(var(--gutter), env(safe-area-inset-left, 0px)); }
+@keyframes lbfade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lbrise { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: none; } }
+.lb .top, .lb .bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.lb .top { border-bottom: 1px solid var(--rule); } .lb .bottom { border-top: 1px solid var(--rule); padding-top: 10px; }
+.lb .top .name { font-size: 24px; line-height: 30px; }
+.lb .stage { flex: 1 1 0; min-height: 0; display: flex; align-items: center; justify-content: center; padding-block: 24px; cursor: zoom-out; }
+.lb .stage img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; cursor: default; animation: lbrise .45s cubic-bezier(.2,.7,.2,1);
+  box-shadow: 0 30px 70px -28px rgba(31,29,26,0.55), 0 2px 8px rgba(31,29,26,0.12); }
+.lb .tbtn { display: flex; align-items: center; gap: 10px; min-height: 44px; min-width: 44px; padding: 0; border: 0; background: none; cursor: pointer; transition: color .2s; }
+.lb .tbtn:hover { color: var(--soft); }
+.lb .capt { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; min-width: 0; }
+.lb .capt .t { font-size: 24px; line-height: 30px; }
+
+@media (prefers-reduced-motion: reduce) { .view, .lb, .lb .stage img { animation: none; } a .ph img, .shot img { transition: none; } }
+
+/* tablet */
+@media (max-width: 1199px) {
+  :root { --gutter: 32px; --gap: 18px; }
+  .big { font-size: 42px; }
+  .intro { grid-template-columns: 58fr 42fr; align-items: center; padding-block: 56px 48px; }
+  .pair { grid-template-columns: 441fr 273fr; gap: 32px; }
+  .pair .b { margin-top: 16%; } .r-tall { aspect-ratio: 3 / 4; }
+  .wide { margin-top: 44px; } .r-wide { aspect-ratio: 746 / 364; }
+  .about-strip { grid-template-columns: 36fr 64fr; padding-block: 72px 64px; }
+  .ghead { padding-block: 52px 36px; }
+  .cards { gap: 28px var(--gap); padding-bottom: 40px; }
+  .card h3 { font-size: 23px; line-height: 29px; }
+  .shead { grid-template-columns: 294fr 452fr; padding-bottom: 32px; }
+  .shead .txt { padding-right: 36px; }
+  .shead h1 { font-size: 40px; }
+  .more-h { font-size: 28px; }
+  .erow { padding-block: 44px; }
+  .erow.text-first { grid-template-columns: 286fr 460fr; }
+  .erow.photo-first { grid-template-columns: 300fr 446fr; } .erow.photo-first .txt { padding-left: 40px; }
+  .erow h2 { font-size: 34px; line-height: 40px; }
+  .r-ewide, .r-about { aspect-ratio: 746 / 350; }
+  .eabout { grid-template-columns: 390fr 356fr; padding-block: 56px 52px; }
+  .phead { padding-block: 52px 40px; }
+  .split { grid-template-columns: 31fr 69fr; padding-block: 56px; }
+  .cta { padding-block: 40px; } .cta h2, .sent h2 { font-size: 34px; line-height: 40px; }
+  .contact { grid-template-columns: 270fr 420fr; gap: 40px 56px; padding-block: 40px 56px; }
+}
+
+/* phone */
+@media (max-width: 809px) {
+  :root { --gutter: 24px; --gap: 16px; }
+  .mast { padding-block: 12px 10px; } .mast .name { font-size: 24px; line-height: 30px; }
+  .nav { gap: 14px; } .nav .role { display: none; }
+  .big { font-size: 40px; }
+  .intro { grid-template-columns: 1fr; row-gap: 24px; padding-block: 40px; }
+  .intro .side { max-width: none; padding-top: 0; gap: 18px; }
+  .intro .side p:first-child, .lede, .split .body p, .about-strip .body p, .eabout p, .contact .side > p, .sent p { line-height: 24px; }
+  .pair { grid-template-columns: 1fr; gap: 40px; } .pair .b { margin-top: 0; }
+  .wide { margin-top: 40px; } .r-wide { aspect-ratio: 342 / 167; }
+  .cap .t { font-size: 24px; line-height: 30px; }
+  .about-strip { grid-template-columns: 1fr; row-gap: 28px; padding-block: 56px 44px; }
+  .about-strip h2, .eabout h2 { font-size: 34px; }
+  .ghead { flex-direction: column; gap: 14px; padding-block: 40px 32px; }
+  .ghead p.lede { padding-top: 0; }
+  .cards.two { grid-template-columns: 1fr; gap: 28px; padding-block: 16px 36px; }
+  .cards.three { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; padding-block: 16px 36px; }
+  .cards.two .card .ph { aspect-ratio: 5 / 4; }
+  .cards.three .card h3 { font-size: 21px; line-height: 26px; }
+  .card .label { margin-top: 14px; } .card .underlined { margin-top: 6px; padding-block: 11px; }
+  .crumb { padding-block: 16px 10px; }
+  .shead { grid-template-columns: 1fr; padding-bottom: 24px; }
+  .shead .txt { padding: 0 0 24px; }
+  .shead h1 { margin-top: 10px; max-width: 280px; } .shead .lede { margin-top: 14px; max-width: 310px; }
+  .more-h { padding-block: 24px 18px; }
+  .more { padding-bottom: 20px; }
+  .row.w2, .row.w3 { grid-template-columns: 1fr; }
+  .row.w1 .shot { aspect-ratio: 3 / 2; }
+  .row.t3, .row.t4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .back { padding-block: 10px 22px; }
+  .ehead { padding-block: 36px; gap: 10px; } .ehead .big { font-size: 36px; }
+  .efirst { padding-bottom: 36px; } .r-ewide, .r-about { aspect-ratio: 3 / 2; }
+  .erow, .erow.text-first, .erow.photo-first { grid-template-columns: 1fr; row-gap: 20px; padding-block: 24px 32px; }
+  .erow.text-first .txt { order: 2; } .erow.photo-first .txt { padding-left: 0; }
+  .erow h2 { font-size: 30px; line-height: 36px; }
+  .eabout { grid-template-columns: 1fr; row-gap: 20px; padding-block: 36px 44px; }
+  .phead { padding-block: 40px 32px; } .phead .big { font-size: 34px; }
+  .split { grid-template-columns: 1fr; row-gap: 20px; padding-block: 36px 40px; }
+  .facts > div { padding-block: 14px; }
+  .cta { flex-direction: column; align-items: flex-start; gap: 6px; padding-block: 36px 30px; }
+  .cta h2, .sent h2 { font-size: 30px; line-height: 36px; }
+  .contact { grid-template-columns: 1fr; gap: 36px; padding-block: 0 40px; }
+  .contact .side { max-width: none; gap: 24px; }
+  .contact .formwrap { border-top: 1px solid var(--rule); padding-top: 32px; }
+  .btn { align-self: stretch; }
+  .foot { flex-direction: column; align-items: flex-start; padding-block: 16px; }
+  .lb .top .name { font-size: 22px; } .lb .stage { padding-block: 18px; }
+  .lb .tbtn .word { display: none; } .lb .capt .t { font-size: 20px; line-height: 26px; }
+}
+</style>
+
+</head>
+<body>
+<div class="sheet"><div id="app"></div></div>
+<div id="lb" class="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden></div>
+
+<script>
+const P = (file, alt) => ({ src: "img/" + file + ".jpg", alt });
+const SERIES = [
+  { slug: "red-rock-canyon", place: "Nevada", title: "Where the silence settles",
+    intro: "The moon hangs over Red Rock Canyon while the sky is still pink. From higher up, the valley floor is pale rock and long shadow.",
+    meta: "Red Rock Canyon, Nevada · April 2026 · Fujifilm X100VI", short: "The moon over red sandstone while the sky is still pink.",
+    cover: P("nevada-1", "The moon over a red sandstone ridge at Red Rock Canyon, Nevada"),
+    wides: [P("nevada-2", "Pale sandstone and long shadows across the valley floor at Red Rock Canyon"), P("nevada-3", "Sandstone peaks under a clear blue sky at Red Rock Canyon")],
+    talls: [P("p1387", "The moon above a red sandstone ridge, in a tall frame"), P("p1392", "Sunlit red peaks above a dark desert floor"), P("p1396", "A canyon wall and desert scrub under blue sky"), P("p1400", "Pale sandstone ridges with the valley beyond")], tall: "2 / 3" },
+  { slug: "california-coast", place: "California", title: "Along the coast",
+    intro: "A sea stack sits just off the beach at Shark Fin Cove. Farther up the coast, cloud settles over the Golden Gate as the light goes.",
+    meta: "Shark Fin Cove and San Francisco, California · 2025–2026 · Fujifilm X100VI", short: "A sea stack and a small beach under a white sky.",
+    cover: P("california-1", "A sea stack and a small beach between cliffs at Shark Fin Cove, California"),
+    wides: [P("california-2", "The Golden Gate Bridge under heavy cloud at dusk"), P("california-3", "Rippled sand on a San Francisco beach in low light")], talls: [] },
+  { slug: "kauai", place: "Kauai", title: "A moment, held",
+    intro: "Rain has only just passed over Waimea Canyon. Down on the coast, the surf keeps breaking through the rock.",
+    meta: "Kauai, Hawaii · March 2026 · Fujifilm X100VI and GFX100S II", short: "Sea cliffs dropping into blue water.",
+    cover: P("kauai-canyon", "A river winding through Waimea Canyon under low cloud"),
+    feature: P("kauai-cliffs-tall", "Green sea cliffs dropping into blue water on Kauai"),
+    wides: [P("kauai-surf", "Surf breaking through dark rock on the Kauai coast"), P("p1111", "A bay and a green headland under heavy cloud on Kauai"), P("p1114", "A bay and distant mountains under heavy cloud")],
+    talls: [P("p0850", "Large tropical leaves filling the frame"), P("p0873", "A red dirt track running between green trees"), P("p1318", "Thin clouds across a blue sky above a dark ridge")], tall: "3 / 4" },
+  { slug: "crater-lake", place: "Oregon", title: "Into the blue",
+    intro: "Crater Lake from the rim, then from the water’s edge, where the blue turns clear over the rocks.",
+    meta: "Crater Lake, Oregon · July 2025 · Fujifilm X100VI", short: "Deep blue water below a snow-streaked rim.",
+    cover: P("oregon-crater-lake", "Crater Lake, deep blue below a snow-streaked rim, seen through fir trees"),
+    wides: [P("p0057", "Crater Lake and Wizard Island below the rim")],
+    talls: [P("p0120", "Crater Lake seen between fir trees"), P("p0123", "Clear blue-green water over rocks at the edge of Crater Lake"), P("p0129", "Ripples spreading across deep blue water below a rock ledge")], tall: "2 / 3" }
+];
+const PRINTS = [
+  { ...SERIES[0].cover, label: "Nevada · 2026", title: "Moon over Red Rock Canyon" },
+  { ...SERIES[1].cover, label: "California · 2026", title: "Shark Fin Cove" },
+  { ...SERIES[2].wides[0], label: "Kauai · 2026", title: "Surf on the rocks" },
+  { ...SERIES[3].cover, label: "Oregon · 2025", title: "Crater Lake" },
+  { ...P("utah-lake", "A dark blue mountain lake ringed by pale granite and fir trees"), label: "Utah · 2026", title: "High lake in June" },
+  { ...SERIES[2].cover, label: "Kauai · 2026", title: "Waimea Canyon" }
+];
+const bySlug = Object.fromEntries(SERIES.map(s => [s.slug, s]));
+const [NEV, CAL, KAU, ORE] = SERIES;
+const num = n => String(n).padStart(2, "0");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const ph = (p, cls = "", eager) => `<div class="ph ${cls}"><img src="${p.src}" alt="${esc(p.alt)}" loading="${eager ? "eager" : "lazy"}"></div>`;
+const BIO = "I’m Kevin, a photographer drawn to natural light, unhurried places, and the stories people carry. This is a space for the moments I wanted to remember.";
+const YEARS = "Select works";
+
+const mast = (cur, home) => `
+  <header class="mast">
+    <a class="name serif" href="#home">Kevin Lee</a>
+    <nav class="nav" aria-label="Main">
+      ${home ? `<span class="label role">Photographer &amp; Observer</span>` : ""}
+      ${[["gallery", "Gallery"], ["prints", "Prints"], ["about", "About"], ["contact", "Contact"]].map(([h, t]) => `<a href="#${h}"${cur === h ? ' aria-current="page"' : ""}>${t}</a>`).join("")}
+    </nav>
+  </header>`;
+const foot = () => `
+  <footer class="foot">
+    <div class="inq"><span class="label">Inquiries</span><a href="#contact">Let’s make something together</a></div>
+    <div><span class="label">© 2026 Kevin Lee</span></div>
+  </footer>`;
+const fact = (k, v) => `<div><span class="label">${k}</span><span>${v}</span></div>`;
+
+const views = {
+  gallery: () => `${mast("gallery")}
+    <section class="ghead">
+      <div class="eyebrow-title"><p class="label">${YEARS}</p><h1 class="serif big">Gallery</h1></div>
+      <p class="lede">Browse the series: the Nevada desert, the California coast, Kauai, and Crater Lake.</p>
+    </section>
+    <section class="cards two">
+      ${SERIES.map((s, i) => `<a class="card" href="#${s.slug}">${ph(s.cover, "", i < 2)}<span class="label">${num(i + 1)} / ${s.place}</span><h3 class="serif">${s.title}</h3><span class="underlined">View series</span></a>`).join("")}
+    </section>
+    ${foot()}`,
+
+  series: s => {
+    const all = [s.cover, ...s.wides, ...s.talls]; let k = 0;
+    const shot = (p, eager) => `<button type="button" class="shot" data-shot="${k++}" aria-label="View larger: ${esc(p.alt)}"><img src="${p.src}" alt="${esc(p.alt)}" loading="${eager ? "eager" : "lazy"}"></button>`;
+    return `${mast("gallery")}
+    <div class="crumb"><a href="#gallery">All series</a></div>
+    <section class="shead">
+      <div class="txt"><p class="label">${num(SERIES.indexOf(s) + 1)} / ${s.place}</p><h1 class="serif">${s.title}</h1><p class="lede">${s.intro}</p><p class="label soft meta">${s.meta}</p></div>
+      ${shot(s.cover, true)}
+    </section>
+    <h2 class="more-h serif">More from this series</h2>
+    <section class="more" style="--tall: ${s.tall || "2 / 3"}">
+      <div class="row w${s.wides.length}">${s.wides.map(p => shot(p)).join("")}</div>
+      ${s.talls.length ? `<div class="row t${s.talls.length}">${s.talls.map(p => shot(p)).join("")}</div>` : ""}
+    </section>
+    <div class="back"><a href="#gallery">Back to gallery</a></div>
+    ${foot()}`;
+  },
+
+  home: () => `${mast("")}
+    <section class="ehead"><p class="label">${YEARS}</p><h1 class="serif big">The quieter hours</h1><p>A personal collection of people, places, and the in-between.</p></section>
+    <a class="efirst" href="#${NEV.slug}">${ph(NEV.cover, "r-ewide", true)}<div class="cap"><span class="t serif">${NEV.title}</span><span class="label">01 / ${NEV.place}</span></div></a>
+    <a class="erow text-first" href="#${CAL.slug}"><div class="txt"><span class="label">02 / ${CAL.place}</span><h2 class="serif">${CAL.title}</h2><p class="lede">${CAL.short}</p></div>${ph(CAL.cover)}</a>
+    <a class="erow photo-first" href="#${KAU.slug}">${ph(KAU.feature)}<div class="txt"><span class="label">03 / ${KAU.place}</span><h2 class="serif">${KAU.title}</h2><p class="lede">${KAU.short}</p></div></a>
+    <a class="erow text-first" href="#${ORE.slug}"><div class="txt"><span class="label">04 / ${ORE.place}</span><h2 class="serif">${ORE.title}</h2><p class="lede">${ORE.short}</p></div>${ph(ORE.cover)}</a>
+    <section class="eabout"><div><p class="label">Behind the camera</p><h2 class="serif">Photography is my way of paying attention.</h2></div><p>${BIO}</p></section>
+    ${foot()}`,
+
+  about: () => `${mast("about")}
+    <section class="phead eyebrow-title"><p class="label">Behind the camera</p><h1 class="serif big">Photography is my way of paying attention.</h1></section>
+    ${ph(P("kauai-sea", "The sea off Kauai under pink clouds"), "r-about", true)}
+    <section class="split">
+      <p class="label">About</p>
+      <div class="body">
+        <p>${BIO}</p>
+        <p class="soft">[YOUR STORY: where you are based, how you started, what you like to photograph and why.]</p>
+        <div class="facts">${fact("Based in", "San Francisco")}${fact("Working with", "Fujifilm GFX100S II and X100VI")}${fact("Available for", "[COMMISSIONS, PORTRAITS, PRINTS]")}${fact("Instagram", `<a href="https://www.instagram.com/justfleeting/" target="_blank" rel="noopener">@justfleeting</a>`)}</div>
+      </div>
+    </section>
+    <section class="cta rule-top"><h2 class="serif">Let’s make something together.</h2><a class="underlined" href="#contact">Get in touch</a></section>
+    ${foot()}`,
+
+  prints: () => `${mast("prints")}
+    <section class="ghead">
+      <div class="eyebrow-title"><p class="label">For the wall</p><h1 class="serif big">Prints</h1></div>
+      <p class="lede">Any photograph here can be made as a print. Tell me which one and the size you have in mind, and I’ll reply with the options.</p>
+    </section>
+    <section class="cards three">
+      ${PRINTS.map((p, i) => `<a class="card" href="#contact">${ph(p, "", i < 3)}<span class="label">${p.label}</span><h3 class="serif">${p.title}</h3><span class="underlined">Ask about this print</span></a>`).join("")}
+    </section>
+    <section class="split rule-top">
+      <p class="label" style="padding-top:19px">Print details</p>
+      <div class="body"><div class="facts" style="margin-top:0">${fact("Paper", "[YOUR PAPER]")}${fact("Sizes", "[YOUR SIZES]")}${fact("Prices from", "[YOUR PRICE]")}${fact("Shipping", "[YOUR SHIPPING]")}</div></div>
+    </section>
+    ${foot()}`,
+
+  contact: () => `${mast("contact")}
+    <section class="phead eyebrow-title rule-bottom"><p class="label">Inquiries</p><h1 class="serif big">Let’s make something together.</h1></section>
+    <section class="contact">
+      <div class="side">
+        <p>For commissions, prints, or a simple hello. Tell me a little about what you have in mind and I’ll write back.</p>
+        <div class="facts">${fact("Email", `<a href="mailto:k.hyunlee6@gmail.com">k.hyunlee6@gmail.com</a>`)}${fact("Instagram", `<a href="https://www.instagram.com/justfleeting/" target="_blank" rel="noopener">@justfleeting</a>`)}${fact("Based in", "San Francisco")}</div>
+      </div>
+      <div class="formwrap" id="formwrap">
+        <form id="note" novalidate>
+          <div class="field"><label class="label" for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+          <div class="field"><label class="label" for="f-email">Email</label><input id="f-email" type="email" autocomplete="email"></div>
+          <div class="field"><label class="label" for="f-topic">What is it about</label><select id="f-topic"><option>A commission</option><option>A print</option><option>A collaboration</option><option>Something else</option></select></div>
+          <div class="field"><label class="label" for="f-message">Message</label><textarea id="f-message" rows="4"></textarea></div>
+          <p class="err" id="f-err" role="alert" hidden></p>
+          <button class="btn" type="submit">Send note</button>
+        </form>
+      </div>
+    </section>
+    ${foot()}`
+};
+
+/* routing */
+const app = document.getElementById("app");
+let current = null, shots = [], shotTitle = "";
+function route() {
+  const h = decodeURIComponent(location.hash.replace(/^#/, ""));
+  const s = bySlug[h], name = s ? "series" : (views[h] && h !== "series" ? h : "home");
+  const key = name + (s ? ":" + s.slug : "");
+  if (key === current) return;
+  current = key; closeLb();
+  app.innerHTML = `<div class="view">${views[name](s)}</div>`;
+  shots = s ? [s.cover, ...s.wides, ...s.talls] : [];
+  shotTitle = s ? `${num(SERIES.indexOf(s) + 1)} / ${s.place}` : "";
+  lbSeries = s ? s.title : "";
+  window.scrollTo(0, 0);
+}
+addEventListener("hashchange", route);
+
+/* contact form: checks the fields, but is not connected to email yet */
+app.addEventListener("submit", e => {
+  if (e.target.id !== "note") return;
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim(), err = document.getElementById("f-err");
+  const fail = (msg, id) => { err.textContent = msg; err.hidden = false; document.getElementById(id).focus(); };
+  if (!v("f-name")) return fail("Add your name so I know who is writing.", "f-name");
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("f-email"))) return fail("Add an email address I can reply to, like name@example.com.", "f-email");
+  if (!v("f-message")) return fail("Write a short message before sending.", "f-message");
+  document.getElementById("formwrap").innerHTML = `<div class="sent"><h2 class="serif">Thank you, ${esc(v("f-name"))}.</h2>
+    <p>This form is not connected to email yet, so nothing was sent. Once it is, your note will go to k.hyunlee6@gmail.com. Until then, please email that address directly.</p>
+    <button class="btn ghost" type="button" id="again">Write another note</button></div>`;
+});
+app.addEventListener("click", e => {
+  if (e.target.id === "again") { current = null; route(); return; }
+  const b = e.target.closest("[data-shot]");
+  if (b) openLb(+b.dataset.shot, b);
+});
+
+/* photo viewer */
+const lb = document.getElementById("lb");
+let lbI = -1, lbFrom = null, lbSeries = "";
+const ICON = { x: '<path d="M4 4l10 10M14 4L4 14"/>', l: '<path d="M16 9H2.5M7 4L2 9l5 5"/>', r: '<path d="M2 9h13.5M11 4l5 5-5 5"/>' };
+const svg = k => `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">${ICON[k]}</svg>`;
+function drawLb() {
+  const p = shots[lbI];
+  lb.innerHTML = `
+    <div class="top"><span class="name serif">Kevin Lee</span><button type="button" class="tbtn" data-lb="close">Close ${svg("x")}</button></div>
+    <div class="stage" data-lb="close"><img src="${p.src}" alt="${esc(p.alt)}"></div>
+    <div class="bottom">
+      <button type="button" class="tbtn" data-lb="prev" aria-label="Previous photo">${svg("l")}<span class="word">Previous</span></button>
+      <div class="capt"><span class="t serif">${lbSeries}</span><span class="label soft">${shotTitle} · ${lbI + 1} / ${shots.length}</span></div>
+      <button type="button" class="tbtn" data-lb="next" aria-label="Next photo"><span class="word">Next</span>${svg("r")}</button>
+    </div>`;
+}
+function openLb(i, from) { lbI = i; lbFrom = from; drawLb(); lb.hidden = false; document.documentElement.style.overflow = "hidden"; lb.querySelector('[data-lb="close"]').focus(); }
+function closeLb() { if (lb.hidden) return; lb.hidden = true; lb.innerHTML = ""; document.documentElement.style.overflow = ""; if (lbFrom && lbFrom.isConnected) lbFrom.focus(); lbFrom = null; }
+function stepLb(d) { lbI = (lbI + d + shots.length) % shots.length; drawLb(); lb.querySelector(`[data-lb="${d < 0 ? "prev" : "next"}"]`).focus(); }
+lb.addEventListener("click", e => {
+  if (e.target.tagName === "IMG") return;
+  const a = e.target.closest("[data-lb]"); if (!a) return;
+  a.dataset.lb === "close" ? closeLb() : stepLb(a.dataset.lb === "prev" ? -1 : 1);
+});
+lb.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeLb(); else if (e.key === "ArrowLeft") stepLb(-1); else if (e.key === "ArrowRight") stepLb(1);
+  else if (e.key === "Tab") { const f = [...lb.querySelectorAll("button")], i = f.indexOf(document.activeElement); e.preventDefault(); f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus(); }
+});
+let tx = null;
+lb.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener("touchend", e => { if (tx === null) return; const d = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(d) > 50) stepLb(d > 0 ? -1 : 1); }, { passive: true });
+
+route();
+</script>
+</body>
+</html>
