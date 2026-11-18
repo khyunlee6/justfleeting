@@ -6,7 +6,7 @@
 <title>Kevin Lee Photography</title>
 <meta name="description" content="Photographs by Kevin Lee: the Nevada desert, the California coast, Kauai and Crater Lake.">
 <style>body{margin:0}[hidden]{display:none!important}</style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Geist:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Geist:wght@400&display=swap">
 <style>
 /* Layout: one fluid sheet, max 1200px. Desktop 48px gutter, tablet (under 1200) 32px,
    phone (under 810) 24px. Hairline rules divide sections; the photographs carry the colour. */
@@ -45,6 +45,10 @@ a:hover .ph img { transform: scale(1.02); }
 
 /* masthead */
 .mast { display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; padding-block: 22px 20px; border-bottom: 1px solid var(--rule); }
+.name.mono { display: inline-flex; align-items: center; font-weight: 300; letter-spacing: 0; }
+.mono .bar { width: 1px; height: .95em; background: currentColor; transform: rotate(18deg); margin: 0 .2em 0 .22em; }
+.mono em { font-style: italic; }
+.mast .name.mono { font-size: 30px; }
 .mast .name { font-size: 26px; line-height: 32px; padding-block: 6px; }
 .nav { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
 .nav a { padding-block: 11px; }
@@ -294,9 +298,10 @@ const ph = (p, cls = "", eager) => `<div class="ph ${cls}"><img src="${p.src}" a
 const BIO = "I’m Kevin, a photographer drawn to natural light, unhurried places, and the stories people carry. This is a space for the moments I wanted to remember.";
 const YEARS = "Select works";
 
+const MONO = `<span aria-hidden="true">K</span><i class="bar" aria-hidden="true"></i><em aria-hidden="true">L</em>`;
 const mast = (cur, home) => `
   <header class="mast">
-    <a class="name serif" href="#home">Kevin Lee</a>
+    <a class="name serif mono" href="#home" aria-label="Kevin Lee, home">${MONO}</a>
     <nav class="nav" aria-label="Main">
       ${home ? `<span class="label role">Photographer &amp; Observer</span>` : ""}
       ${[["gallery", "Gallery"], ["prints", "Prints"], ["about", "About"], ["contact", "Contact"]].map(([h, t]) => `<a href="#${h}"${cur === h ? ' aria-current="page"' : ""}>${t}</a>`).join("")}
@@ -440,7 +445,7 @@ const svg = k => `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" st
 function drawLb() {
   const p = shots[lbI];
   lb.innerHTML = `
-    <div class="top"><span class="name serif">Kevin Lee</span><button type="button" class="tbtn" data-lb="close">Close ${svg("x")}</button></div>
+    <div class="top"><span class="name serif mono" role="img" aria-label="Kevin Lee">${MONO}</span><button type="button" class="tbtn" data-lb="close">Close ${svg("x")}</button></div>
     <div class="stage" data-lb="close"><img src="${p.src}" alt="${esc(p.alt)}"></div>
     <div class="bottom">
       <button type="button" class="tbtn" data-lb="prev" aria-label="Previous photo">${svg("l")}<span class="word">Previous</span></button>
