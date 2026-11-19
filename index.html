@@ -264,30 +264,45 @@ form { display: flex; flex-direction: column; gap: 28px; margin: 0; }
 <script>
 const P = (file, alt) => ({ src: "img/" + file + ".jpg", alt });
 const SERIES = [
-  { slug: "red-rock-canyon", place: "Nevada", title: "Where the silence settles",
+  { slug: "red-rock-canyon", place: "Nevada", title: "Red rock at first light",
     intro: "The moon hangs over Red Rock Canyon while the sky is still pink. From higher up, the valley floor is pale rock and long shadow.",
-    meta: "Red Rock Canyon, Nevada · April 2026 · Fujifilm X100VI", short: "The moon over red sandstone while the sky is still pink.",
+    meta: "Red Rock Canyon, Nevada", short: "The moon over red sandstone while the sky is still pink.",
     cover: P("nevada-1", "The moon over a red sandstone ridge at Red Rock Canyon, Nevada"),
-    wides: [P("nevada-2", "Pale sandstone and long shadows across the valley floor at Red Rock Canyon"), P("nevada-3", "Sandstone peaks under a clear blue sky at Red Rock Canyon")],
-    talls: [P("p1387", "The moon above a red sandstone ridge, in a tall frame"), P("p1392", "Sunlit red peaks above a dark desert floor"), P("p1396", "A canyon wall and desert scrub under blue sky"), P("p1400", "Pale sandstone ridges with the valley beyond")], tall: "2 / 3" },
-  { slug: "california-coast", place: "California", title: "Along the coast",
+    wides: [P("nevada-2", "Pale sandstone and long shadows across the valley floor at Red Rock Canyon"), P("nevada-3", "Sandstone peaks under a clear blue sky at Red Rock Canyon"), P("dscf3942", "The moon over red cliffs under a pink sky")],
+    talls: [P("p1387", "The moon above a red sandstone ridge, in a tall frame"), P("p1392", "Sunlit red peaks above a dark desert floor"), P("p1396", "A canyon wall and desert scrub under blue sky"), P("p1400", "Pale sandstone ridges with the valley beyond"), P("dscf3939", "The moon above a red ridge, framed by a tree"), P("dscf3948", "Red rock peaks lit by the first sun"), P("dscf3953", "Hikers on a trail below sunlit red cliffs")], tall: "2 / 3" },
+  { slug: "california-coast", place: "California", title: "The Santa Cruz coast",
     intro: "A sea stack sits just off the beach at Shark Fin Cove. Farther up the coast, cloud settles over the Golden Gate as the light goes.",
-    meta: "Shark Fin Cove and San Francisco, California · 2025–2026 · Fujifilm X100VI", short: "A sea stack and a small beach under a white sky.",
+    meta: "Shark Fin Cove and San Francisco, California", short: "A sea stack and a small beach under a white sky.",
     cover: P("california-1", "A sea stack and a small beach between cliffs at Shark Fin Cove, California"),
-    wides: [P("california-2", "The Golden Gate Bridge under heavy cloud at dusk"), P("california-3", "Rippled sand on a San Francisco beach in low light")], talls: [] },
-  { slug: "kauai", place: "Kauai", title: "A moment, held",
+    wides: [P("california-2", "The Golden Gate Bridge under heavy cloud at dusk"), P("california-3", "Rippled sand on a San Francisco beach in low light")], talls: [P("dscf4810", "The sea stack at Shark Fin Cove from above")] },
+  { slug: "kauai", place: "Kauai", title: "After the rain",
     intro: "Rain has only just passed over Waimea Canyon. Down on the coast, the surf keeps breaking through the rock.",
-    meta: "Kauai, Hawaii · March 2026 · Fujifilm X100VI and GFX100S II", short: "Sea cliffs dropping into blue water.",
+    meta: "Kauai, Hawaii", short: "Sea cliffs dropping into blue water.",
     cover: P("kauai-canyon", "A river winding through Waimea Canyon under low cloud"),
     feature: P("kauai-cliffs-tall", "Green sea cliffs dropping into blue water on Kauai"),
-    wides: [P("kauai-surf", "Surf breaking through dark rock on the Kauai coast"), P("p1111", "A bay and a green headland under heavy cloud on Kauai"), P("p1114", "A bay and distant mountains under heavy cloud")],
+    wides: [P("kauai-surf", "Surf breaking through dark rock on the Kauai coast"), P("p1111", "A bay and a green headland under heavy cloud on Kauai"), P("p1114", "A bay and distant mountains under heavy cloud"), P("dscf3435-2", "A beach at sunset under a leaning palm")],
     talls: [P("p0850", "Large tropical leaves filling the frame"), P("p0873", "A red dirt track running between green trees"), P("p1318", "Thin clouds across a blue sky above a dark ridge")], tall: "3 / 4" },
-  { slug: "crater-lake", place: "Oregon", title: "Into the blue",
+  { slug: "crater-lake", place: "Oregon", title: "Blue, all the way down",
     intro: "Crater Lake from the rim, then from the water’s edge, where the blue turns clear over the rocks.",
-    meta: "Crater Lake, Oregon · July 2025 · Fujifilm X100VI", short: "Deep blue water below a snow-streaked rim.",
+    meta: "Crater Lake, Oregon", short: "Deep blue water below a snow-streaked rim.",
     cover: P("oregon-crater-lake", "Crater Lake, deep blue below a snow-streaked rim, seen through fir trees"),
-    wides: [P("p0057", "Crater Lake and Wizard Island below the rim")],
-    talls: [P("p0120", "Crater Lake seen between fir trees"), P("p0123", "Clear blue-green water over rocks at the edge of Crater Lake"), P("p0129", "Ripples spreading across deep blue water below a rock ledge")], tall: "2 / 3" }
+    wides: [P("p0057", "Crater Lake and Wizard Island below the rim"), P("dscf0235", "Crater Lake and Wizard Island under a clear sky")],
+    talls: [P("p0120", "Crater Lake seen between fir trees"), P("p0123", "Clear blue-green water over rocks at the edge of Crater Lake"), P("p0129", "Ripples spreading across deep blue water below a rock ledge"), P("dscf0507", "Crater Lake reflecting clouds, framed by fir trees"), P("dscf0508", "A small boat on Crater Lake below a pine"), P("dscf0519", "Swimmers on the rocky shore of Crater Lake"), P("dscf0521", "A swimmer in deep blue water at Crater Lake"), P("dscf0522", "Three people sitting on a rock in clear blue water"), P("dscf0528", "A person diving from a cliff into Crater Lake"), P("dscf0536", "A wooden boathouse on the rocks at Crater Lake")], tall: "2 / 3" },
+  { slug: "people", place: "People", title: "The people in it",
+    intro: "[ONE OR TWO LINES ABOUT THE PEOPLE YOU PHOTOGRAPH AND WHY.]",
+    meta: "Marin, Oregon, Kauai and San Francisco", short: "",
+    cover: P("dscf0846", "Two small figures on top of a dark boulder"),
+    wides: [], talls: [P("dscf0429", "People gathered on a smoky field on the Fourth of July"), P("dscf0442", "People walking through smoke at a Fourth of July gathering"), P("dscf3444-2", "A group watching the surf from the sand"), P("dscf4496", "A crowd on a lawn with the Golden Gate Bridge behind"), P("dscf2555", "A person with a white parasol in a formal garden")], tall: "2 / 3" },
+  { slug: "the-table", place: "The table", title: "What was on the table",
+    intro: "[ONE OR TWO LINES ABOUT THE MEALS AND WHO THEY WERE SHARED WITH.]",
+    meta: "Kauai and Utah", short: "",
+    cover: P("dscf3717-2", "A plate of sliced fish with citrus and flowers"),
+    wides: [], talls: [P("dscf3718-2", "Grilled prawns on a plate with greens"), P("dscf3722-2", "A whole grilled fish on a dark plate"), P("dscf4695", "A dish with bread and a small bowl of sauce on a dark table"), P("dscf4699", "A plated dish on a black plate")], tall: "2 / 3" },
+  { slug: "moments", place: "Moments", title: "The moments in between",
+    intro: "[ONE OR TWO LINES ABOUT THE SMALL THINGS THAT WERE NOT PLANNED.]",
+    meta: "California, Oregon and Utah", short: "",
+    cover: P("dscf4601", "A trail winding through a green mountain valley"),
+    wides: [P("dscf4685", "An alpine lake ringed by granite and fir")], talls: [P("dscf0439", "Smoke drifting over a field at dusk"), P("dsf2065", "A man at a cafe patio table among plants"), P("dscf2210", "A still lake with snow-covered mountains behind"), P("dscf2515", "A swimming pool and white lounge chairs on a lawn"), P("dscf2527", "A garden pool seen past white flowers"), P("dscf2565", "A sunken garden lawn between tall hedges"), P("dscf4019", "Red flowers in a swirl of blur"), P("dscf4021", "A fire pit on a terrace above the coast"), P("dscf4237", "Striped loungers beside a hotel pool"), P("dscf4238", "A rooftop pool under a deep blue sky")], tall: "2 / 3" }
 ];
 const PRINTS = [
   { ...SERIES[0].cover, label: "Nevada · 2026", title: "Moon over Red Rock Canyon" },
@@ -310,13 +325,13 @@ const mast = (cur, home) => `
   <header class="mast">
     <a class="name serif logo" href="#home" aria-label="Kevin Lee, home"><span class="mono">${MONO}</span><span class="sub" aria-hidden="true">Kevin Lee</span></a>
     <nav class="nav" aria-label="Main">
-      ${home ? `<span class="label role">Photographer &amp; Observer</span>` : ""}
+      ${home ? `<span class="label role">Travel and lifestyle photographer</span>` : ""}
       ${[["gallery", "Gallery"], ["prints", "Prints"], ["about", "About"], ["contact", "Contact"]].map(([h, t]) => `<a href="#${h}"${cur === h ? ' aria-current="page"' : ""}>${t}</a>`).join("")}
     </nav>
   </header>`;
 const foot = () => `
   <footer class="foot">
-    <div class="inq"><span class="label">Inquiries</span><a href="#contact">Let’s make something together</a></div>
+    <div class="inq"><span class="label">Inquiries</span><a href="#contact">Write to me</a></div>
     <div><span class="label">© 2026 Kevin Lee</span></div>
   </footer>`;
 const fact = (k, v) => `<div><span class="label">${k}</span><span>${v}</span></div>`;
@@ -325,7 +340,7 @@ const views = {
   gallery: () => `${mast("gallery")}
     <section class="ghead">
       <div class="eyebrow-title"><p class="label">${YEARS}</p><h1 class="serif big">Gallery</h1></div>
-      <p class="lede">Browse the series: the Nevada desert, the California coast, Kauai, and Crater Lake.</p>
+      <p class="lede">Browse the series: four places, then the people, the table and the moments in between.</p>
     </section>
     <section class="cards two">
       ${SERIES.map((s, i) => `<a class="card" href="#${s.slug}">${ph(s.cover, "", i < 2)}<span class="label">${num(i + 1)} / ${s.place}</span><h3 class="serif">${s.title}</h3><span class="underlined">View series</span></a>`).join("")}
@@ -343,8 +358,8 @@ const views = {
     </section>
     <h2 class="more-h serif">More from this series</h2>
     <section class="more" style="--tall: ${s.tall || "2 / 3"}">
-      <div class="row w${s.wides.length}">${s.wides.map(p => shot(p)).join("")}</div>
-      ${s.talls.length ? `<div class="row t${s.talls.length}">${s.talls.map(p => shot(p)).join("")}</div>` : ""}
+      ${s.wides.length ? `<div class="row w${Math.min(s.wides.length, 2)}">${s.wides.map(p => shot(p)).join("")}</div>` : ""}
+      ${s.talls.length ? `<div class="row t4">${s.talls.map(p => shot(p)).join("")}</div>` : ""}
     </section>
     <div class="back"><a href="#gallery">Back to gallery</a></div>
     ${foot()}`;
@@ -352,18 +367,18 @@ const views = {
 
   home: () => `${mast("", true)}
     <section class="intro">
-      <h1 class="serif big">Drawn to the quiet.<br>Moved by the everyday.</h1>
-      <div class="side"><p class="soft">A personal collection of people, places, and the in-between. Photographs made slowly, with curiosity.</p><p class="label">${YEARS}</p></div>
+      <h1 class="serif big">Slowing the world down, long enough to hold a glimmer.</h1>
+      <div class="side"><p class="soft">A personal collection of what I never found the words for. I kept it as photographs instead.</p><p class="label">${YEARS}</p></div>
     </section>
     <section class="pair">
       <a href="#${CAL.slug}">${ph(CAL.cover, "r-lead", true)}<div class="cap"><span class="t serif">${CAL.title}</span><span class="label soft">01 / ${CAL.place}</span></div></a>
       <a class="b" href="#${KAU.slug}">${ph(KAU.cover, "r-tall", true)}<div class="cap"><span class="t serif">${KAU.title}</span><span class="label soft">02 / ${KAU.place}</span></div></a>
     </section>
     <a class="wide" href="#${NEV.slug}">${ph(NEV.cover, "r-wide")}<div class="cap"><span class="t serif">${NEV.title}</span><span class="label soft">03 / ${NEV.place}</span></div></a>
-    <a class="tail" href="#${ORE.slug}"><div class="txt"><span class="label soft">04 / ${ORE.place}</span><h2 class="serif">${ORE.title}</h2><p class="lede soft">${ORE.short}</p></div>${ph(ORE.cover, "r-lead")}</a>
+    <a class="tail" href="#${ORE.slug}"><div class="txt"><span class="label soft">04 / ${ORE.place}</span><h2 class="serif">${ORE.title}</h2></div>${ph(ORE.cover, "r-lead")}</a>
     <section class="about-strip">
       <p class="label">Behind the camera</p>
-      <div class="body"><h2 class="serif">Photography is my way of paying attention.</h2><p class="soft">${BIO}</p></div>
+      <div class="body"><h2 class="serif">Photography is my way of experiencing the world, capturing moments that would otherwise be fleeting.</h2><p class="soft">${BIO}</p></div>
     </section>
     ${foot()}`,
 
