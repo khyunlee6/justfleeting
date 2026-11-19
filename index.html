@@ -372,7 +372,7 @@ const views = {
       ${shot(s.cover, true)}
     </section>
     <h2 class="more-h serif">More from this series</h2>
-    <section class="more"><div class="mosaic">${s.photos.map(p => shot(p)).join("")}</div></section>
+    <section class="more"><div class="mosaic"${s.photos.length < 3 ? ` style="column-count: ${s.photos.length}"` : ""}>${s.photos.map(p => shot(p)).join("")}</div></section>
     <div class="back"><a href="#gallery">Back to gallery</a></div>
     ${foot()}`;
   },
