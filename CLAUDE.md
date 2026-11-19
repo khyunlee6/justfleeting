@@ -35,14 +35,18 @@ from the `main` branch at https://khyunlee6.github.io/justfleeting/.
 - Text Kevin has not written yet stays as a bracketed placeholder, for example `[YOUR PAPER]`.
 - Photo slots without a photo stay as labelled placeholders, for example `[ADD PHOTO: FOOD 1]`.
 
-## Story structure (agreed direction for the home page)
+## Home page
 
-The home page tells one story in four chapters. The chapter titles read as one sentence:
+The home page uses the original layout from Kevin's Framer design: the headline "Drawn to
+the quiet. Moved by the everyday.", two offset photos, one wide photo, then a short
+"Behind the camera" strip. It is not the centred editorial layout.
 
-1. Places: "It starts with a place."
-2. People: "Then the people in it."
-3. The table (food): "What was on the table."
-4. Moments: "And the moments in between."
+## Story structure (draft, mock-up only)
+
+Kevin is still developing a narrative about people, places, food and moments. A draft of it
+lives on the "Editorial" boards of the mock-up as four chapters whose titles read as one
+sentence: "It starts with a place." "Then the people in it." "What was on the table."
+"And the moments in between." It is not on the live site. Do not move it there unless Kevin asks.
 
 ## Photographs
 

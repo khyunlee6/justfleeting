@@ -345,13 +345,20 @@ const views = {
     ${foot()}`;
   },
 
-  home: () => `${mast("")}
-    <section class="ehead"><p class="label">${YEARS}</p><h1 class="serif big">The quieter hours</h1><p>A personal collection of people, places, and the in-between.</p></section>
-    <a class="efirst" href="#${NEV.slug}">${ph(NEV.cover, "r-ewide", true)}<div class="cap"><span class="t serif">${NEV.title}</span><span class="label">01 / ${NEV.place}</span></div></a>
-    <a class="erow text-first" href="#${CAL.slug}"><div class="txt"><span class="label">02 / ${CAL.place}</span><h2 class="serif">${CAL.title}</h2><p class="lede">${CAL.short}</p></div>${ph(CAL.cover)}</a>
-    <a class="erow photo-first" href="#${KAU.slug}">${ph(KAU.feature)}<div class="txt"><span class="label">03 / ${KAU.place}</span><h2 class="serif">${KAU.title}</h2><p class="lede">${KAU.short}</p></div></a>
-    <a class="erow text-first" href="#${ORE.slug}"><div class="txt"><span class="label">04 / ${ORE.place}</span><h2 class="serif">${ORE.title}</h2><p class="lede">${ORE.short}</p></div>${ph(ORE.cover)}</a>
-    <section class="eabout"><div><p class="label">Behind the camera</p><h2 class="serif">Photography is my way of paying attention.</h2></div><p>${BIO}</p></section>
+  home: () => `${mast("", true)}
+    <section class="intro">
+      <h1 class="serif big">Drawn to the quiet.<br>Moved by the everyday.</h1>
+      <div class="side"><p class="soft">A personal collection of people, places, and the in-between. Photographs made slowly, with curiosity.</p><p class="label">${YEARS}</p></div>
+    </section>
+    <section class="pair">
+      <a href="#${CAL.slug}">${ph(CAL.cover, "r-lead", true)}<div class="cap"><span class="t serif">${CAL.title}</span><span class="label soft">01 / ${CAL.place}</span></div></a>
+      <a class="b" href="#${KAU.slug}">${ph(KAU.cover, "r-tall", true)}<div class="cap"><span class="t serif">${KAU.title}</span><span class="label soft">02 / ${KAU.place}</span></div></a>
+    </section>
+    <a class="wide" href="#${NEV.slug}">${ph(NEV.cover, "r-wide")}<div class="cap"><span class="t serif">${NEV.title}</span><span class="label soft">03 / ${NEV.place}</span></div></a>
+    <section class="about-strip">
+      <p class="label">Behind the camera</p>
+      <div class="body"><h2 class="serif">Photography is my way of paying attention.</h2><p class="soft">${BIO}</p></div>
+    </section>
     ${foot()}`,
 
   about: () => `${mast("about")}
