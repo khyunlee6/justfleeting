@@ -63,7 +63,13 @@ agents, give one step to each.
 3. Check: open the site at 1280, 810 and 390 pixels wide. Confirm there are no broken
    images, no sideways scrolling, no script errors, and that the photo viewer and the
    contact form still work. The agent doing this check should not be the one that made the change.
-4. Publish: commit with a one-line message that says what changed for a visitor, push, then
-   load the live page and confirm the change is there.
+4. Publish, with Kevin's approval first: never commit or push site changes to `main`, and
+   never merge. Put site changes on the branch `preview` and keep one open pull request
+   from `preview` into `main` titled "Sync site with mock-up". Describe each change in the
+   pull request in plain language. Kevin merges it himself, and the live site updates about
+   a minute later. After he merges, load the live page and confirm the change is there.
+
+The narrative and the wording are still being developed. Treat all text in the mock-up as
+a draft that Kevin may change, and never move a draft to the live site outside the pull request.
 
 Report back in plain language: what changed, where, and anything left as a placeholder.
