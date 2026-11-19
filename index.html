@@ -111,12 +111,8 @@ a:hover .ph img { transform: scale(1.02); }
 .shead .shot { aspect-ratio: 3 / 2; }
 .more-h { font-size: 30px; line-height: 36px; padding-block: 28px 22px; }
 .more { display: flex; flex-direction: column; gap: var(--gap); padding-bottom: 36px; border-bottom: 1px solid var(--rule); }
-.row { display: grid; gap: var(--gap); }
-.row.w1 { grid-template-columns: 1fr; } .row.w1 .shot { aspect-ratio: 1104 / 520; }
-.row.w2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .row.w3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.row.w2 .shot, .row.w3 .shot { aspect-ratio: 3 / 2; }
-.row.t3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .row.t4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.row.t3 .shot, .row.t4 .shot { aspect-ratio: var(--tall, 2 / 3); }
+.mosaic { column-count: 3; column-gap: var(--gap); }
+.mosaic .shot { aspect-ratio: var(--ar); margin-bottom: var(--gap); break-inside: avoid; }
 .back { padding-block: 14px 34px; }
 
 /* editorial */
@@ -231,9 +227,7 @@ form { display: flex; flex-direction: column; gap: 28px; margin: 0; }
   .shead h1 { margin-top: 10px; max-width: 280px; } .shead .lede { margin-top: 14px; max-width: 310px; }
   .more-h { padding-block: 24px 18px; }
   .more { padding-bottom: 20px; }
-  .row.w2, .row.w3 { grid-template-columns: 1fr; }
-  .row.w1 .shot { aspect-ratio: 3 / 2; }
-  .row.t3, .row.t4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .mosaic { column-count: 2; column-gap: 14px; } .mosaic .shot { margin-bottom: 14px; }
   .back { padding-block: 10px 22px; }
   .ehead { padding-block: 36px; gap: 10px; } .ehead .big { font-size: 36px; }
   .efirst { padding-bottom: 36px; } .r-ewide, .r-about { aspect-ratio: 3 / 2; }
@@ -262,77 +256,73 @@ form { display: flex; flex-direction: column; gap: 28px; margin: 0; }
 <div id="lb" class="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden></div>
 
 <script>
-const P = (file, alt) => ({ src: "img/" + file + ".jpg", alt });
+const P = (file, alt, ar) => ({ src: "img/" + file + ".jpg", alt, ar });
 const SERIES = [
-  { slug: "red-rock-canyon", place: "Nevada", title: "Red rock at first light",
+  { slug: "red-rock-canyon", place: "Nevada",
     intro: "The moon hangs over Red Rock Canyon while the sky is still pink. From higher up, the valley floor is pale rock and long shadow.",
-    meta: "Red Rock Canyon, Nevada", short: "The moon over red sandstone while the sky is still pink.",
-    cover: P("nevada-1", "The moon over a red sandstone ridge at Red Rock Canyon, Nevada"),
-    wides: [P("nevada-2", "Pale sandstone and long shadows across the valley floor at Red Rock Canyon"), P("nevada-3", "Sandstone peaks under a clear blue sky at Red Rock Canyon"), P("dscf3942", "The moon over red cliffs under a pink sky")],
-    talls: [P("p1387", "The moon above a red sandstone ridge, in a tall frame"), P("p1392", "Sunlit red peaks above a dark desert floor"), P("p1396", "A canyon wall and desert scrub under blue sky"), P("p1400", "Pale sandstone ridges with the valley beyond"), P("dscf3939", "The moon above a red ridge, framed by a tree"), P("dscf3948", "Red rock peaks lit by the first sun"), P("dscf3953", "Hikers on a trail below sunlit red cliffs")], tall: "2 / 3" },
-  { slug: "california-coast", place: "California", title: "The Santa Cruz coast",
+    meta: "Red Rock Canyon",
+    cover: P("nevada-1", "The moon over a red sandstone ridge at Red Rock Canyon, Nevada", 1.500),
+    photos: [P("nevada-2", "Pale sandstone and long shadows across the valley floor at Red Rock Canyon", 1.500), P("nevada-3", "Sandstone peaks under a clear blue sky at Red Rock Canyon", 1.500), P("dscf3942", "The moon over red cliffs under a pink sky", 1.500), P("p1387", "The moon above a red sandstone ridge, in a tall frame", 0.667), P("p1392", "Sunlit red peaks above a dark desert floor", 0.667), P("p1396", "A canyon wall and desert scrub under blue sky", 0.667), P("p1400", "Pale sandstone ridges with the valley beyond", 0.667), P("dscf3939", "The moon above a red ridge, framed by a tree", 0.667), P("dscf3948", "Red rock peaks lit by the first sun", 0.667), P("dscf3953", "Hikers on a trail below sunlit red cliffs", 0.667)] },
+  { slug: "california-coast", place: "California",
     intro: "A sea stack sits just off the beach at Shark Fin Cove. Farther up the coast, cloud settles over the Golden Gate as the light goes.",
-    meta: "Santa Cruz, Big Sur and San Francisco, California", short: "A sea stack and a small beach under a white sky.",
-    cover: P("california-1", "A sea stack and a small beach between cliffs at Shark Fin Cove, California"),
-    wides: [P("california-2", "The Golden Gate Bridge under heavy cloud at dusk"), P("california-3", "Rippled sand on a San Francisco beach in low light"), P("jf-2452", "Rock stacks and a beach in low sun"), P("khl-6041", "The Golden Gate Bridge seen from a beach")], talls: [P("jf-2342", "Fog drifting into a cove on the Big Sur coast"), P("jf-2570", "The Big Sur coast with a bridge in the distance"), P("jf-1768", "Yellow wildflowers on a bluff above the sea"), P("jf-1805", "A cove with yellow flowers in the foreground"), P("jf-1836", "A sandstone cliff above an empty beach"), P("jf-1874", "The sea stack at Shark Fin Cove with surf around it"), P("khl-6163", "The Golden Gate Bridge tower from below"), P("dscf4810", "The sea stack at Shark Fin Cove from above")] },
-  { slug: "kauai", place: "Kauai", title: "After the rain",
+    meta: "Santa Cruz, Big Sur, Marin, Lake Tahoe and San Francisco",
+    cover: P("california-1", "A sea stack and a small beach between cliffs at Shark Fin Cove, California", 1.500),
+    photos: [P("california-2", "The Golden Gate Bridge under heavy cloud at dusk", 1.500), P("california-3", "Rippled sand on a San Francisco beach in low light", 1.500), P("jf-2452", "Rock stacks and a beach in low sun", 1.498), P("khl-6041", "The Golden Gate Bridge seen from a beach", 1.498), P("jf-2342", "Fog drifting into a cove on the Big Sur coast", 0.667), P("jf-2570", "The Big Sur coast with a bridge in the distance", 0.667), P("jf-1768", "Yellow wildflowers on a bluff above the sea", 0.667), P("jf-1805", "A cove with yellow flowers in the foreground", 0.667), P("jf-1836", "A sandstone cliff above an empty beach", 0.667), P("jf-1874", "The sea stack at Shark Fin Cove with surf around it", 0.667), P("khl-6163", "The Golden Gate Bridge tower from below", 0.667), P("dscf4810", "The sea stack at Shark Fin Cove from above", 0.667), P("dscf0768", "Two people laughing in golden grass above the bay", 1.500), P("dscf0774", "Two people embracing on a golden hillside", 1.500), P("dscf0830", "Two people standing on a boulder above the bay", 1.500), P("dscf0846", "Two small figures on top of a dark boulder", 1.500), P("dscf2216", "A man lining up a shot at a pool table", 0.750), P("dscf4496", "A crowd on a lawn with the Golden Gate Bridge behind", 0.667), P("dscf2555", "A person with a white parasol in a formal garden", 0.750), P("dsf2065", "A man at a cafe patio table among plants", 0.750), P("dscf2210", "A still lake with snow-covered mountains behind", 0.750), P("dscf2515", "A swimming pool and white lounge chairs on a lawn", 0.750), P("dscf2527", "A garden pool seen past white flowers", 0.750), P("dscf2565", "A sunken garden lawn between tall hedges", 0.750), P("dscf4019", "Red flowers in a swirl of blur", 0.667), P("dscf4021", "A fire pit on a terrace above the coast", 0.667), P("jf-9433", "A hotel sign among palm trees", 0.746), P("jf-9520", "A single palm against a blue sky", 0.757)] },
+  { slug: "kauai", place: "Kauai",
     intro: "Rain has only just passed over Waimea Canyon. Down on the coast, the surf keeps breaking through the rock.",
-    meta: "Kauai, Hawaii", short: "Sea cliffs dropping into blue water.",
-    cover: P("kauai-canyon", "A river winding through Waimea Canyon under low cloud"),
-    feature: P("kauai-cliffs-tall", "Green sea cliffs dropping into blue water on Kauai"),
-    wides: [P("kauai-surf", "Surf breaking through dark rock on the Kauai coast"), P("p1111", "A bay and a green headland under heavy cloud on Kauai"), P("p1114", "A bay and distant mountains under heavy cloud"), P("dscf3435-2", "A beach at sunset under a leaning palm")],
-    talls: [P("p0850", "Large tropical leaves filling the frame"), P("p0873", "A red dirt track running between green trees"), P("p1318", "Thin clouds across a blue sky above a dark ridge")], tall: "3 / 4" },
-  { slug: "crater-lake", place: "Oregon", title: "Blue, all the way down",
+    meta: "Hawaii",
+    cover: P("kauai-canyon", "A river winding through Waimea Canyon under low cloud", 1.333),
+    photos: [P("kauai-surf", "Surf breaking through dark rock on the Kauai coast", 1.333), P("p1111", "A bay and a green headland under heavy cloud on Kauai", 1.499), P("p1114", "A bay and distant mountains under heavy cloud", 1.499), P("dscf3435-2", "A beach at sunset under a leaning palm", 1.333), P("p0850", "Large tropical leaves filling the frame", 0.750), P("p0873", "A red dirt track running between green trees", 0.750), P("p1318", "Thin clouds across a blue sky above a dark ridge", 0.667), P("dscf3444-2", "A group watching the surf from the sand", 0.750), P("dscf3717-2", "A plate of sliced fish with citrus and flowers", 0.667), P("dscf3718-2", "Grilled prawns on a plate with greens", 0.667), P("dscf3722-2", "A whole grilled fish on a dark plate", 0.667)] },
+  { slug: "crater-lake", place: "Oregon",
     intro: "Crater Lake from the rim, then from the water’s edge, where the blue turns clear over the rocks.",
-    meta: "Crater Lake, Oregon", short: "Deep blue water below a snow-streaked rim.",
-    cover: P("oregon-crater-lake", "Crater Lake, deep blue below a snow-streaked rim, seen through fir trees"),
-    wides: [P("p0057", "Crater Lake and Wizard Island below the rim")],
-    talls: [P("p0120", "Crater Lake seen between fir trees"), P("p0123", "Clear blue-green water over rocks at the edge of Crater Lake"), P("p0129", "Ripples spreading across deep blue water below a rock ledge"), P("dscf0507", "Crater Lake reflecting clouds, framed by fir trees"), P("dscf0519", "Swimmers on the rocky shore of Crater Lake"), P("dscf0522", "Three people sitting on a rock in clear blue water"), P("dscf0528", "A person diving from a cliff into Crater Lake"), P("dscf0536", "A wooden boathouse on the rocks at Crater Lake")], tall: "2 / 3" },
-  { slug: "argentina", place: "Argentina", title: "The city at dusk",
-    intro: "[ONE OR TWO LINES ABOUT ARGENTINA.]",
-    meta: "Argentina", short: "",
-    cover: P("jf-3303", "City rooftops under a pale sky at dusk"),
-    wides: [], talls: [P("jf-3165", "A newsstand under a stone balcony, with a scooter parked outside"), P("jf-3287", "A green facade with arched and oval windows"), P("jf-3296", "City rooftops and a tall mast seen through a dark window frame"), P("jf-3310", "Apartment blocks in warm evening light"), P("jf-3312", "An orange domed tower above a long green plaza")], tall: "2 / 3" },
-  { slug: "mexico", place: "Mexico", title: "Shopfronts and flowers",
-    intro: "[ONE OR TWO LINES ABOUT MEXICO.]",
-    meta: "Mexico", short: "",
-    cover: P("jf-4499", "A white building with a row of green chairs outside"),
-    wides: [], talls: [P("jf-3653", "A bakery with pastries on a glass cart"), P("jf-3737", "Red flowering trees under a white sky"), P("jf-4518", "A weaving shop with dyed yarn hanging on a brick wall")], tall: "2 / 3" },
-  { slug: "korea-and-japan", place: "Korea and Japan", title: "Steam and neon",
-    intro: "[ONE OR TWO LINES ABOUT KOREA AND JAPAN.]",
-    meta: "Seoul, Korea, and Japan", short: "",
-    cover: P("jf-4326", "Steam rising from a food stall beside a fan"),
-    wides: [P("jf-4484", "Pots and basins in an open kitchen"), P("jf-4703", "Fish laid out at a market stall"), P("khl-4251", "A black taxi passing a lit restaurant at night")], talls: [P("jf-5082", "A tower seen from below through bare branches"), P("jf-5841", "A green shopfront with a neon sign at night"), P("khl-4245", "Paper lanterns outside a restaurant at night")], tall: "2 / 3" },
-  { slug: "iceland", place: "Iceland", title: "Waterfalls and a white horse",
-    intro: "[ONE OR TWO LINES ABOUT ICELAND.]",
-    meta: "Iceland", short: "",
-    cover: P("jf-1918", "A cone shaped mountain above a waterfall"),
-    wides: [], talls: [P("jf-2058", "Dark sea rocks with snow covered mountains across the water"), P("jf-2096", "A pale horse behind a fence post")], tall: "2 / 3" },
-  { slug: "colorado", place: "Colorado", title: "Sandstone and a far white peak",
+    meta: "Crater Lake",
+    cover: P("oregon-crater-lake", "Crater Lake, deep blue below a snow-streaked rim, seen through fir trees", 1.500),
+    photos: [P("p0057", "Crater Lake and Wizard Island below the rim", 1.499), P("p0120", "Crater Lake seen between fir trees", 0.667), P("p0123", "Clear blue-green water over rocks at the edge of Crater Lake", 0.667), P("p0129", "Ripples spreading across deep blue water below a rock ledge", 0.667), P("dscf0507", "Crater Lake reflecting clouds, framed by fir trees", 0.667), P("dscf0519", "Swimmers on the rocky shore of Crater Lake", 0.667), P("dscf0522", "Three people sitting on a rock in clear blue water", 0.667), P("dscf0528", "A person diving from a cliff into Crater Lake", 0.667), P("dscf0536", "A wooden boathouse on the rocks at Crater Lake", 0.667), P("dscf0429", "People gathered on a smoky field on the Fourth of July", 0.667), P("dscf0442", "People walking through smoke at a Fourth of July gathering", 0.667), P("dscf0439", "Smoke drifting over a field at dusk", 0.667)] },
+  { slug: "utah", place: "Utah",
+    intro: "[ONE OR TWO LINES ABOUT UTAH.]",
+    meta: "Wasatch mountains",
+    cover: P("dscf4601", "A trail winding through a green mountain valley", 1.500),
+    photos: [P("dscf4695", "A dish with bread and a small bowl of sauce on a dark table", 0.667), P("dscf4699", "A plated dish on a black plate", 0.667), P("dscf4685", "An alpine lake ringed by granite and fir", 1.500)] },
+  { slug: "colorado", place: "Colorado",
     intro: "[ONE OR TWO LINES ABOUT COLORADO.]",
-    meta: "Colorado", short: "",
-    cover: P("jf-1608", "A red sandstone fin above green scrub under storm cloud"),
-    wides: [], talls: [P("jf-1546", "A balanced sandstone rock against a pale sky"), P("jf-newyorkcity-1270", "Red rock ridges with a snow covered peak behind")], tall: "2 / 3" },
-  { slug: "people", place: "People", title: "The people in it",
-    intro: "[ONE OR TWO LINES ABOUT THE PEOPLE YOU PHOTOGRAPH AND WHY.]",
-    meta: "California, Oregon, Kauai, Korea, Japan, Argentina and Mexico", short: "",
-    cover: P("dscf0768", "Two people laughing in golden grass above the bay"),
-    wides: [P("dscf0774", "Two people embracing on a golden hillside"), P("dscf0830", "Two people standing on a boulder above the bay"), P("dscf0846", "Two small figures on top of a dark boulder"), P("jf-5785", "People with umbrellas on a narrow shopping street in the rain"), P("jf-4402", "People eating at a crowded market food hall"), P("jf-4209", "People at a food stall on a street corner"), P("jf-4171", "People passing a street food cart"), P("jf-4273", "A cook at a steaming street stall at night"), P("khl-1881", "Three men in suits crossing a busy city street at night"), P("khl-4231", "A taxi driver waiting in his car at night")], talls: [P("dscf2216", "A man lining up a shot at a pool table"), P("dscf0429", "People gathered on a smoky field on the Fourth of July"), P("dscf0442", "People walking through smoke at a Fourth of July gathering"), P("dscf3444-2", "A group watching the surf from the sand"), P("dscf4496", "A crowd on a lawn with the Golden Gate Bridge behind"), P("dscf2555", "A person with a white parasol in a formal garden"), P("jf-3399", "A cook in an apron in a restaurant kitchen"), P("khl-2687", "A person with an umbrella beside a small boat"), P("khl-2864", "A man crouching next to a bicycle")], tall: "2 / 3" },
-  { slug: "the-table", place: "The table", title: "What was on the table",
-    intro: "[ONE OR TWO LINES ABOUT THE MEALS AND WHO THEY WERE SHARED WITH.]",
-    meta: "Kauai, Utah, Mexico, Argentina, Korea and Puerto Rico", short: "",
-    cover: P("dscf3717-2", "A plate of sliced fish with citrus and flowers"),
-    wides: [P("jf-5344", "A small dish of sauce in a wide ceramic bowl")], talls: [P("dscf3718-2", "Grilled prawns on a plate with greens"), P("dscf3722-2", "A whole grilled fish on a dark plate"), P("dscf4695", "A dish with bread and a small bowl of sauce on a dark table"), P("dscf4699", "A plated dish on a black plate"), P("jf-3017", "Toast, a pastry and a coffee on a dark table, seen from above"), P("jf-3041", "A plate of sliced meat with a knife and fork"), P("jf-4132", "A dark plated dish beside a glass of white wine"), P("jf-4138", "A bowl of mushrooms with tortillas and a wine glass"), P("jf-4157", "A dark bowl of mushrooms and herbs beside a menu"), P("jf-6559", "A long leaf topped with orange pieces and herbs on a white surface"), P("jf-6592", "A fried soft shell crab on a white plate"), P("jf-6636", "A red drink with a dried citrus slice"), P("jf-3649", "Tacos and tortillas on pink paper"), P("jf-4050", "A basket of tostadas and small plates on a marble table"), P("jf-4090", "A plate of green sauce and dark crumbs, seen from above"), P("jf-4122", "A blue rimmed bowl of clams and herbs"), P("jf-4144", "A bowl of mushrooms with soup, tortillas and a wine glass"), P("jf-6610", "Hands holding a blue corn taco"), P("jf-6721", "A spoon lifting a green leaf from a plate of red sauce"), P("jf-6756", "A scoop of ice cream in a white bowl"), P("jf-7132", "A fish fillet on a green and brown patterned plate"), P("jf-7144", "Small clay bowls and a wooden lid on a marble table"), P("jf-7294", "A dark dish with cream on a black plate"), P("jf-0485", "French toast with a cup of coffee"), P("jf-5231", "A mussel topped with herbs on a bed of shells"), P("jf-5354", "A yellow puree with green herbs on a grey plate"), P("khl-6394", "Hands cutting into a plate of eggs")], tall: "2 / 3" },
-  { slug: "moments", place: "Moments", title: "The moments in between",
-    intro: "[ONE OR TWO LINES ABOUT THE SMALL THINGS THAT WERE NOT PLANNED.]",
-    meta: "California, Oregon and Utah", short: "",
-    cover: P("dscf4601", "A trail winding through a green mountain valley"),
-    wides: [P("dscf4685", "An alpine lake ringed by granite and fir"), P("jf-8321", "A roadside store with a wooden porch")], talls: [P("dscf0439", "Smoke drifting over a field at dusk"), P("dsf2065", "A man at a cafe patio table among plants"), P("dscf2210", "A still lake with snow-covered mountains behind"), P("dscf2515", "A swimming pool and white lounge chairs on a lawn"), P("dscf2527", "A garden pool seen past white flowers"), P("dscf2565", "A sunken garden lawn between tall hedges"), P("dscf4019", "Red flowers in a swirl of blur"), P("dscf4021", "A fire pit on a terrace above the coast"), P("dscf4237", "Striped loungers beside a hotel pool"), P("dscf4238", "A rooftop pool under a deep blue sky"), P("jf-2-2", "Two deer on a foggy hillside"), P("jf-5010", "A small boat moored on calm water under cloud"), P("jf-8298", "Wooden shelves full of books"), P("jf-8322", "White farm buildings on a dry hillside"), P("jf-8917-2", "A building on a cliff reflected in still water"), P("jf-9191", "A rock stack on a misty beach"), P("jf-9433", "A hotel sign among palm trees"), P("jf-9520", "A single palm against a blue sky"), P("khl-1721", "Raindrop rings on a dark puddle"), P("khl-6979", "Birds flying over brick apartment buildings")], tall: "2 / 3" }
+    meta: "",
+    cover: P("jf-1608", "A red sandstone fin above green scrub under storm cloud", 0.763),
+    photos: [P("jf-1546", "A balanced sandstone rock against a pale sky", 0.667), P("jf-newyorkcity-1270", "Red rock ridges with a snow covered peak behind", 0.800)] },
+  { slug: "mexico", place: "Mexico",
+    intro: "[ONE OR TWO LINES ABOUT MEXICO.]",
+    meta: "",
+    cover: P("jf-4499", "A white building with a row of green chairs outside", 1.498),
+    photos: [P("jf-3653", "A bakery with pastries on a glass cart", 0.667), P("jf-3737", "Red flowering trees under a white sky", 0.667), P("jf-4518", "A weaving shop with dyed yarn hanging on a brick wall", 0.797), P("jf-4402", "People eating at a crowded market food hall", 1.498), P("jf-4132", "A dark plated dish beside a glass of white wine", 0.667), P("jf-4138", "A bowl of mushrooms with tortillas and a wine glass", 0.667), P("jf-4157", "A dark bowl of mushrooms and herbs beside a menu", 0.667), P("jf-6559", "A long leaf topped with orange pieces and herbs on a white surface", 0.744), P("jf-6592", "A fried soft shell crab on a white plate", 0.667), P("jf-6636", "A red drink with a dried citrus slice", 0.699), P("jf-3649", "Tacos and tortillas on pink paper", 0.667), P("jf-4050", "A basket of tostadas and small plates on a marble table", 0.719), P("jf-4090", "A plate of green sauce and dark crumbs, seen from above", 0.738), P("jf-4122", "A blue rimmed bowl of clams and herbs", 0.667), P("jf-4144", "A bowl of mushrooms with soup, tortillas and a wine glass", 0.667), P("jf-6610", "Hands holding a blue corn taco", 0.719), P("jf-6721", "A spoon lifting a green leaf from a plate of red sauce", 0.667), P("jf-6756", "A scoop of ice cream in a white bowl", 0.731), P("jf-7132", "A fish fillet on a green and brown patterned plate", 0.766), P("jf-7144", "Small clay bowls and a wooden lid on a marble table", 0.667), P("jf-7294", "A dark dish with cream on a black plate", 0.667)] },
+  { slug: "argentina", place: "Argentina",
+    intro: "[ONE OR TWO LINES ABOUT ARGENTINA.]",
+    meta: "",
+    cover: P("jf-3303", "City rooftops under a pale sky at dusk", 1.498),
+    photos: [P("jf-3165", "A newsstand under a stone balcony, with a scooter parked outside", 0.881), P("jf-3287", "A green facade with arched and oval windows", 0.652), P("jf-3296", "City rooftops and a tall mast seen through a dark window frame", 0.639), P("jf-3310", "Apartment blocks in warm evening light", 0.704), P("jf-3312", "An orange domed tower above a long green plaza", 0.667), P("jf-3399", "A cook in an apron in a restaurant kitchen", 0.667), P("jf-3017", "Toast, a pastry and a coffee on a dark table, seen from above", 0.706), P("jf-3041", "A plate of sliced meat with a knife and fork", 0.716)] },
+  { slug: "iceland", place: "Iceland",
+    intro: "[ONE OR TWO LINES ABOUT ICELAND.]",
+    meta: "",
+    cover: P("jf-1918", "A cone shaped mountain above a waterfall", 1.498),
+    photos: [P("jf-2058", "Dark sea rocks with snow covered mountains across the water", 0.667), P("jf-2096", "A pale horse behind a fence post", 0.705)] },
+  { slug: "korea", place: "Korea",
+    intro: "[ONE OR TWO LINES ABOUT KOREA.]",
+    meta: "Seoul",
+    cover: P("jf-4326", "Steam rising from a food stall beside a fan", 1.498),
+    photos: [P("jf-4484", "Pots and basins in an open kitchen", 1.498), P("jf-4703", "Fish laid out at a market stall", 1.543), P("jf-5082", "A tower seen from below through bare branches", 0.655), P("jf-4209", "People at a food stall on a street corner", 1.498), P("jf-4171", "People passing a street food cart", 1.806), P("jf-4273", "A cook at a steaming street stall at night", 1.498), P("jf-5344", "A small dish of sauce in a wide ceramic bowl", 1.511), P("jf-5231", "A mussel topped with herbs on a bed of shells", 0.667), P("jf-5354", "A yellow puree with green herbs on a grey plate", 0.744)] },
+  { slug: "japan", place: "Japan",
+    intro: "[ONE OR TWO LINES ABOUT JAPAN.]",
+    meta: "",
+    cover: P("khl-4251", "A black taxi passing a lit restaurant at night", 1.125),
+    photos: [P("jf-5841", "A green shopfront with a neon sign at night", 0.667), P("khl-4245", "Paper lanterns outside a restaurant at night", 0.751), P("jf-5785", "People with umbrellas on a narrow shopping street in the rain", 1.498), P("khl-1881", "Three men in suits crossing a busy city street at night", 1.051), P("khl-4231", "A taxi driver waiting in his car at night", 1.334), P("khl-2687", "A person with an umbrella beside a small boat", 0.964), P("khl-2864", "A man crouching next to a bicycle", 0.787), P("khl-1721", "Raindrop rings on a dark puddle", 1.000)] },
+  { slug: "elsewhere", place: "Elsewhere",
+    intro: "[ONE OR TWO LINES ABOUT THESE PLACES.]",
+    meta: "[LOCATIONS TO ADD]",
+    cover: P("jf-8321", "A roadside store with a wooden porch", 1.498),
+    photos: [P("jf-0485", "French toast with a cup of coffee", 0.667), P("khl-6394", "Hands cutting into a plate of eggs", 0.667), P("dscf4237", "Striped loungers beside a hotel pool", 0.667), P("dscf4238", "A rooftop pool under a deep blue sky", 0.667), P("jf-2-2", "Two deer on a foggy hillside", 0.808), P("jf-5010", "A small boat moored on calm water under cloud", 0.667), P("jf-8298", "Wooden shelves full of books", 0.691), P("jf-8322", "White farm buildings on a dry hillside", 0.746), P("jf-8917-2", "A building on a cliff reflected in still water", 0.667), P("jf-9191", "A rock stack on a misty beach", 0.726), P("khl-6979", "Birds flying over brick apartment buildings", 0.817)] }
 ];
 const PRINTS = [
   { ...SERIES[0].cover, label: "Nevada · 2026", title: "Moon over Red Rock Canyon" },
   { ...SERIES[1].cover, label: "California · 2026", title: "Shark Fin Cove" },
-  { ...SERIES[2].wides[0], label: "Kauai · 2026", title: "Surf on the rocks" },
+  { ...P("kauai-surf", "Surf breaking through dark rock on the Kauai coast"), label: "Kauai · 2026", title: "Surf on the rocks" },
   { ...SERIES[3].cover, label: "Oregon · 2025", title: "Crater Lake" },
   { ...P("utah-lake", "A dark blue mountain lake ringed by pale granite and fir trees"), label: "Utah · 2026", title: "High lake in June" },
   { ...SERIES[2].cover, label: "Kauai · 2026", title: "Waimea Canyon" }
@@ -365,27 +355,24 @@ const views = {
   gallery: () => `${mast("gallery")}
     <section class="ghead">
       <div class="eyebrow-title"><p class="label">${YEARS}</p><h1 class="serif big">Gallery</h1></div>
-      <p class="lede">Browse the series: the places first, then the people, the table and the moments in between.</p>
+      <p class="lede">Browse by place.</p>
     </section>
     <section class="cards two">
-      ${SERIES.map((s, i) => `<a class="card" href="#${s.slug}">${ph(s.cover, "", i < 2)}<span class="label">${num(i + 1)} / ${s.place}</span><h3 class="serif">${s.title}</h3><span class="underlined">View series</span></a>`).join("")}
+      ${SERIES.map((s, i) => `<a class="card" href="#${s.slug}">${ph(s.cover, "", i < 2)}<span class="label">${num(i + 1)}</span><h3 class="serif">${s.place}</h3><span class="underlined">View series</span></a>`).join("")}
     </section>
     ${foot()}`,
 
   series: s => {
-    const all = [s.cover, ...s.wides, ...s.talls]; let k = 0;
-    const shot = (p, eager) => `<button type="button" class="shot" data-shot="${k++}" aria-label="View larger: ${esc(p.alt)}"><img src="${p.src}" alt="${esc(p.alt)}" loading="${eager ? "eager" : "lazy"}"></button>`;
+    let k = 0;
+    const shot = (p, eager) => `<button type="button" class="shot" data-shot="${k++}" style="--ar: ${p.ar || 1.5}" aria-label="View larger: ${esc(p.alt)}"><img src="${p.src}" alt="${esc(p.alt)}" loading="${eager ? "eager" : "lazy"}"></button>`;
     return `${mast("gallery")}
     <div class="crumb"><a href="#gallery">All series</a></div>
     <section class="shead">
-      <div class="txt"><p class="label">${num(SERIES.indexOf(s) + 1)} / ${s.place}</p><h1 class="serif">${s.title}</h1><p class="lede">${s.intro}</p><p class="label soft meta">${s.meta}</p></div>
+      <div class="txt"><p class="label">${num(SERIES.indexOf(s) + 1)}</p><h1 class="serif">${s.place}</h1><p class="lede">${s.intro}</p>${s.meta ? `<p class="label soft meta">${s.meta}</p>` : ""}</div>
       ${shot(s.cover, true)}
     </section>
     <h2 class="more-h serif">More from this series</h2>
-    <section class="more" style="--tall: ${s.tall || "2 / 3"}">
-      ${s.wides.length ? `<div class="row w${Math.min(s.wides.length, 2)}">${s.wides.map(p => shot(p)).join("")}</div>` : ""}
-      ${s.talls.length ? `<div class="row t4">${s.talls.map(p => shot(p)).join("")}</div>` : ""}
-    </section>
+    <section class="more"><div class="mosaic">${s.photos.map(p => shot(p)).join("")}</div></section>
     <div class="back"><a href="#gallery">Back to gallery</a></div>
     ${foot()}`;
   },
@@ -396,11 +383,11 @@ const views = {
       <div class="side"><p class="soft">A personal collection of what I never found the words for. I kept it as photographs instead.</p><p class="label">${YEARS}</p></div>
     </section>
     <section class="pair">
-      <a href="#${CAL.slug}">${ph(CAL.cover, "r-lead", true)}<div class="cap"><span class="t serif">${CAL.title}</span><span class="label soft">01 / ${CAL.place}</span></div></a>
-      <a class="b" href="#${KAU.slug}">${ph(KAU.cover, "r-tall", true)}<div class="cap"><span class="t serif">${KAU.title}</span><span class="label soft">02 / ${KAU.place}</span></div></a>
+      <a href="#${CAL.slug}">${ph(CAL.cover, "r-lead", true)}<div class="cap"><span class="t serif">${CAL.place}</span><span class="label soft">01</span></div></a>
+      <a class="b" href="#${KAU.slug}">${ph(KAU.cover, "r-tall", true)}<div class="cap"><span class="t serif">${KAU.place}</span><span class="label soft">02</span></div></a>
     </section>
-    <a class="wide" href="#${NEV.slug}">${ph(NEV.cover, "r-wide")}<div class="cap"><span class="t serif">${NEV.title}</span><span class="label soft">03 / ${NEV.place}</span></div></a>
-    <a class="tail" href="#${ORE.slug}"><div class="txt"><span class="label soft">04 / ${ORE.place}</span><h2 class="serif">${ORE.title}</h2></div>${ph(ORE.cover, "r-lead")}</a>
+    <a class="wide" href="#${NEV.slug}">${ph(NEV.cover, "r-wide")}<div class="cap"><span class="t serif">${NEV.place}</span><span class="label soft">03</span></div></a>
+    <a class="tail" href="#${ORE.slug}"><div class="txt"><span class="label soft">04</span><h2 class="serif">${ORE.place}</h2></div>${ph(ORE.cover, "r-lead")}</a>
     <section class="about-strip">
       <p class="label">Behind the camera</p>
       <div class="body"><h2 class="serif">Photography is my way of experiencing the world, capturing moments that would otherwise be fleeting.</h2><p class="soft">${BIO}</p></div>
@@ -466,9 +453,9 @@ function route() {
   if (key === current) return;
   current = key; closeLb();
   app.innerHTML = `<div class="view">${views[name](s)}</div>`;
-  shots = s ? [s.cover, ...s.wides, ...s.talls] : [];
-  shotTitle = s ? `${num(SERIES.indexOf(s) + 1)} / ${s.place}` : "";
-  lbSeries = s ? s.title : "";
+  shots = s ? [s.cover, ...s.photos] : [];
+  shotTitle = s ? num(SERIES.indexOf(s) + 1) : "";
+  lbSeries = s ? s.place : "";
   window.scrollTo(0, 0);
 }
 addEventListener("hashchange", route);

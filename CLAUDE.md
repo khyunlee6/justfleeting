@@ -37,9 +37,21 @@ from the `main` branch at https://khyunlee6.github.io/justfleeting/.
 
 ## Home page
 
-The home page uses the original layout from Kevin's Framer design: the headline "Drawn to
-the quiet. Moved by the everyday.", two offset photos, one wide photo, then a short
-"Behind the camera" strip. It is not the centred editorial layout.
+The home page uses the original layout from Kevin's Framer design: the headline "Slowing the
+world down, long enough to hold a glimmer.", two offset photos, one wide photo, a fourth
+series beside its photo, then a short "Behind the camera" strip. It is not the centred
+editorial layout.
+
+## Gallery and series pages
+
+- The gallery is organised by place. Each series is one place (Nevada, California, Kauai,
+  Oregon, Utah, Colorado, Mexico, Argentina, Iceland, Korea, Japan, Elsewhere).
+- A series is named by its place only. There are no taglines.
+- Each series page shows a cover, then every other photo in a mosaic of columns at the
+  photo's own proportions (three columns on desktop and tablet, two on phone).
+- "Elsewhere" holds photos whose place is not known yet. Ask Kevin before guessing a place.
+- Kevin sorts photos in the folder "Website photos (selected)" on his Desktop, one folder
+  per place. When he asks, read that folder and make the mock-up and the site match it.
 
 ## Story structure (draft, mock-up only)
 
