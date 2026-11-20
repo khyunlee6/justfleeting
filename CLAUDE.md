@@ -19,9 +19,10 @@ from the `main` branch at https://khyunlee6.github.io/justfleeting/.
   Do not introduce other colours unless Kevin asks.
 - Type: Cormorant Garamond for headings, Geist for body text, Italiana for the small
   capitals under the logo.
-- Logo: the K/L monogram (upright K, a thin slanted hairline, italic L) with "KEVIN LEE" in
+- Logo: the J/F monogram (upright J, a thin slanted hairline, italic F) with "JUSTFLEETING" in
   small spaced capitals underneath. It is in the header of every page. The photo viewer
-  shows the monogram alone.
+  shows the monogram alone. Kevin's name is not in the logo. It appears as the heading of
+  the About page and in the copyright line.
 - Feel: minimal, quiet, editorial. No ornaments, stamps, drop shadows on text, or bright accents.
 - The site must work at three widths: desktop (1200 and wider), tablet (810 to 1199) and
   phone (under 810). The page body must never scroll sideways.
