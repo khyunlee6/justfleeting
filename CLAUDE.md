@@ -63,7 +63,8 @@ photos that link to the series), then a short "Behind the camera" strip.
 
 ## Prints page
 
-The Prints page is grouped by the same four series as the gallery, in the same order. Each
+The Prints page is grouped by series, in gallery order: The Great Outdoors, Travel and
+Urban, Food. There is no People group: photographs of people are not offered as prints. Each
 group shows a few photographs with a title and an "Ask about this print" link, and a link
 to the full series. There is no print details section (paper, sizes, price, shipping).
 
