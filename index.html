@@ -298,8 +298,7 @@ const SERIES = [
 ];
 const PRINTS = [
   { series: SERIES[0], items: [{ ...P("california-1", "A sea stack and a small beach between cliffs at Shark Fin Cove, California"), title: "Shark Fin Cove" }, { ...P("kauai-surf", "Surf breaking through dark rock on the Kauai coast"), title: "Surf on the rocks" }, { ...P("kauai-canyon", "A river winding through Waimea Canyon under low cloud"), title: "Waimea Canyon" }, { ...P("oregon-crater-lake", "Crater Lake, deep blue below a snow-streaked rim, seen through fir trees"), title: "Crater Lake" }, { ...P("utah-lake", "A dark blue mountain lake ringed by pale granite and fir trees"), title: "High lake in June" }] },
-  { series: SERIES[1], items: [{ ...P("khl-4245", "Paper lanterns outside a restaurant at night"), title: "Paper lanterns" }, { ...P("california-2", "The Golden Gate Bridge under heavy cloud at dusk"), title: "Golden Gate at dusk" }, { ...P("khl-4251", "A black taxi passing a lit restaurant at night"), title: "Taxi at night" }, { ...P("prints-p16", "A walled old town of red roofs beside a rocky cove"), title: "Old town roofs" }] },
-  { series: SERIES[2], items: [{ ...P("jf-4703", "Fish laid out at a market stall"), title: "Market fish" }, { ...P("jf-5344", "A small dish of sauce in a wide ceramic bowl"), title: "Ceramic bowl" }, { ...P("dscf3717-2", "A plate of sliced fish with citrus and flowers"), title: "Sliced fish with citrus" }, { ...P("jf-3649", "Tacos and tortillas on pink paper"), title: "Tacos on pink paper" }] }
+  { series: SERIES[1], items: [{ ...P("khl-4245", "Paper lanterns outside a restaurant at night"), title: "Paper lanterns" }, { ...P("california-2", "The Golden Gate Bridge under heavy cloud at dusk"), title: "Golden Gate at dusk" }, { ...P("khl-4251", "A black taxi passing a lit restaurant at night"), title: "Taxi at night" }, { ...P("prints-p16", "A walled old town of red roofs beside a rocky cove"), title: "Old town roofs" }] }
 ];
 const bySlug = Object.fromEntries(SERIES.map(s => [s.slug, s]));
 /* Home page: one block per series, in gallery order. Photos are looked up by their alt text. */
@@ -313,7 +312,7 @@ const HOME = [
 const num = n => String(n).padStart(2, "0");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ph = (p, cls = "", eager) => `<div class="ph ${cls}"><img src="${p.src}" alt="${esc(p.alt)}" loading="${eager ? "eager" : "lazy"}"></div>`;
-const BIO = "I’m Kevin, a photographer based in San Francisco. I work with a Fujifilm GFX100S II and an X100VI.";
+const BIO = "I’m Kevin, a photographer based in San Francisco.";
 const YEARS = "Select works";
 
 const MONO = `<span aria-hidden="true">K</span><i class="bar" aria-hidden="true"></i><em aria-hidden="true">L</em>`;
@@ -376,7 +375,7 @@ const views = {
   home: () => `${mast("")}
     <section class="ehead rule-bottom">
       <p class="label">${YEARS}</p>
-      <h1 class="serif big">Slowing the world down, long enough to hold a glimmer.</h1>
+      <h1 class="serif big">Capturing the fleeting moments.</h1>
       <p>Landscapes, cities, food and people.</p>
     </section>
     ${HOME.map((g, i) => { const s = SERIES[i], ps = g.alts.map(byAlt), link = (p, cls, eager) => `<a href="#${s.slug}">${ph(p, cls, eager)}</a>`;
@@ -398,7 +397,7 @@ const views = {
       ${ph(P("kevin-lee", "Kevin Lee, smiling, in a white T-shirt"), "r-me", true)}
       <div class="body">
         <p>${BIO}</p>
-        <div class="facts">${fact("Based in", "San Francisco")}${fact("Working with", "Fujifilm GFX100S II and X100VI")}${fact("Available for", "Commissions and prints")}${fact("Instagram", `<a href="https://www.instagram.com/justfleeting/" target="_blank" rel="noopener">@justfleeting</a>`)}</div>
+        <div class="facts">${fact("Based in", "San Francisco")}${fact("Available for", "Commissions and prints")}${fact("Instagram", `<a href="https://www.instagram.com/justfleeting/" target="_blank" rel="noopener">@justfleeting</a>`)}</div>
       </div>
     </section>
     <section class="cta rule-top"><h2 class="serif">Let’s make something together.</h2><a class="underlined" href="#contact">Get in touch</a></section>
