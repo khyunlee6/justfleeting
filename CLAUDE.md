@@ -10,7 +10,10 @@ the repository root sets it, so never remove that file). DNS is on Cloudflare, s
 - `index.html`: the whole site. One file holds the styles, the content data (`SERIES`, `PRINTS`)
   and the page views (`home`, `gallery`, `series`, `about`, `prints`, `contact`). Pages are
   switched by the address hash, for example `#gallery` or `#kauai`.
-- `img/`: the photographs, as JPEG. Wide photos are about 1800px on the long side.
+- `img/`: the photographs, as JPEG, 2400px on the long side where the source allows (smaller when the only
+  copy available is smaller). `img/s/` holds a lighter copy of each photo (short side 800px) that the
+  grids and thumbnails load. The photo viewer always loads the full file. When a photo is added or
+  replaced, make both files and update the `DIM` size table in `index.html`.
 - The design mock-up lives outside this repository, as a Claude Design canvas called
   "Kevin Lee Portfolio Mock-up" (https://claude.ai/artifact/14mrB2SmUMoT1JcEeWnvGm).
   Kevin reviews and comments there.
