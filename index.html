@@ -305,7 +305,7 @@ const bySlug = Object.fromEntries(SERIES.map(s => [s.slug, s]));
 /* Home page: one block per series, in gallery order. Photos are looked up by their alt text. */
 const byAlt = alt => SERIES.flatMap(s => [s.cover, ...s.photos]).find(p => p.alt === alt);
 const HOME = [
-  { kind: "big3", pos: "50% 38%", alts: ["Snow covered peaks under pink cloud", "A person diving from a cliff into Crater Lake", "A sea arch seen from inside a dark cave", "Surf along a curved bay below a hillside town"] },
+  { kind: "big3", pos: "50% 51%", alts: ["Snow covered peaks under pink cloud", "A person diving from a cliff into Crater Lake", "A sea arch seen from inside a dark cave", "Surf along a curved bay below a hillside town"] },
   { kind: "tall4", alts: ["Paper lanterns outside a restaurant at night", "A tour boat full of passengers in a harbour of painted houses", "A tiered pagoda roof above a stone gate", "A green shopfront with a neon sign at night"] },
   { kind: "sq4", alts: ["Dumplings in broth being served beside focaccia", "A small dish of sauce in a wide ceramic bowl", "A plate of sliced fish with citrus and flowers", "Tacos and tortillas on pink paper"] },
   { kind: "big", alts: ["Two people laughing in golden grass above the bay"] }
