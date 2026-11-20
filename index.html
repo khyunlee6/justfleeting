@@ -278,7 +278,14 @@ form { display: flex; flex-direction: column; gap: 28px; margin: 0; }
 <div id="lb" class="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden></div>
 
 <script>
-const P = (file, alt, ar, place) => ({ src: "img/" + file + ".jpg", alt, ar, place });
+/* Pixel size of every full photo in img/. Photos whose short side is over 900 also have a lighter copy in img/s/ (short side 800) for grids and thumbnails. */
+const DIM = {"ap-dscf1701":[2173,1423],"ap-dscf1719":[2291,1289],"ap-dscf1792":[1536,2048],"ap-dscf1797":[1800,2400],"ap-dscf1936":[1448,2172],"ap-dscf2019":[1600,2400],"ap-dscf2366":[1536,2048],"ap-dscf2429":[1536,2048],"ap-dscf3858":[1448,2172],"ap-dscf4554":[2400,1800],"ap-dscf4586":[1800,2400],"ap-dscf4809":[2400,1800],"ap-dscf4815":[2400,1800],"ap-dscf4819":[2400,1800],"banff-0796":[1620,1080],"california-1":[1800,1200],"california-2":[1800,1200],"california-3":[1800,1200],"dscf0429":[1600,2400],"dscf0439":[1600,2400],"dscf0442":[1600,2400],"dscf0507":[1600,2400],"dscf0519":[1600,2400],"dscf0522":[1600,2400],"dscf0528":[1600,2400],"dscf0536":[1600,2400],"dscf0768":[2400,1600],"dscf0774":[2400,1600],"dscf0830":[2400,1600],"dscf0846":[2400,1600],"dscf2210":[1800,2400],"dscf2216":[1800,2400],"dscf2515":[1800,2400],"dscf2527":[1800,2400],"dscf2555":[1800,2400],"dscf2565":[1800,2400],"dscf3435-2":[2400,1800],"dscf3444-2":[1800,2400],"dscf3717-2":[1600,2400],"dscf3718-2":[1600,2400],"dscf3722-2":[1600,2400],"dscf3939":[1600,2400],"dscf3942":[2400,1600],"dscf3948":[1600,2400],"dscf3953":[1600,2400],"dscf4019":[1600,2400],"dscf4021":[1600,2400],"dscf4237":[1600,2400],"dscf4238":[1600,2400],"dscf4496":[1600,2400],"dscf4601":[2400,1600],"dscf4685":[2400,1600],"dscf4695":[1600,2400],"dscf4699":[1600,2400],"dscf4810":[1600,2400],"dsf2065":[1800,2400],"fog-5610":[1600,2400],"fog-6143":[1600,2400],"fog-6151":[1600,2400],"fog-6270":[1600,2400],"fog-6892":[1080,1620],"fog-6976":[1031,1546],"fog-7015":[1080,1620],"fog-7045":[911,1620],"gd-1091":[1602,2400],"gd-1282":[1920,2400],"gd-1924":[1602,2400],"gd-3759":[1602,2400],"jf-0485":[1602,2400],"jf-1546":[1602,2400],"jf-1608":[1832,2400],"jf-1768":[1602,2400],"jf-1805":[1602,2400],"jf-1836":[1602,2400],"jf-1874":[1602,2400],"jf-1918":[2400,1602],"jf-2-2":[1940,2400],"jf-2058":[1602,2400],"jf-2096":[1691,2400],"jf-2342":[1602,2400],"jf-2452":[2400,1602],"jf-2570":[1602,2400],"jf-3017":[1694,2400],"jf-3041":[1718,2400],"jf-3165":[2116,2400],"jf-3287":[1565,2400],"jf-3296":[1534,2400],"jf-3303":[2400,1602],"jf-3310":[1689,2400],"jf-3312":[1602,2400],"jf-3399":[1602,2400],"jf-3649":[1602,2400],"jf-3653":[1602,2400],"jf-3737":[1602,2400],"jf-4050":[1725,2400],"jf-4090":[1770,2400],"jf-4122":[1602,2400],"jf-4132":[1602,2400],"jf-4138":[1602,2400],"jf-4144":[1602,2400],"jf-4157":[1602,2400],"jf-4171":[2400,1328],"jf-4209":[2400,1602],"jf-4273":[2400,1602],"jf-4326":[2400,1602],"jf-4402":[2400,1602],"jf-4484":[2400,1602],"jf-4499":[2400,1602],"jf-4518":[1914,2400],"jf-4703":[2400,1555],"jf-5010":[1602,2400],"jf-5082":[1571,2400],"jf-5231":[1602,2400],"jf-5344":[2400,1589],"jf-5354":[1787,2400],"jf-5785":[2400,1602],"jf-5841":[1602,2400],"jf-6559":[1786,2400],"jf-6592":[1602,2400],"jf-6610":[1726,2400],"jf-6636":[1677,2400],"jf-6721":[1602,2400],"jf-6756":[1754,2400],"jf-7132":[1838,2400],"jf-7144":[1602,2400],"jf-7294":[1602,2400],"jf-8298":[1658,2400],"jf-8321":[2400,1602],"jf-8322":[1791,2400],"jf-8917-2":[1602,2400],"jf-9191":[1742,2400],"jf-9433":[1791,2400],"jf-9520":[1818,2400],"jf-newyorkcity-1270":[1920,2400],"kauai-canyon":[1800,1350],"kauai-surf":[1800,1350],"kevin-lee":[918,918],"khl-1721":[2400,2400],"khl-1881":[2400,2283],"khl-2687":[2315,2400],"khl-2864":[1888,2400],"khl-4231":[2400,1798],"khl-4245":[1802,2400],"khl-4251":[2400,2133],"khl-6041":[2400,1602],"khl-6163":[1602,2400],"khl-6394":[1602,2400],"khl-6979":[1961,2400],"lib-dsc-2268":[1063,1595],"lib-dsc-2362":[900,1600],"lib-dscf2322":[1448,2172],"lib-dscf2335":[1800,2400],"lib-dscf2340":[1800,2400],"lib-dscf2457":[1448,2172],"lib-dscf2468":[2172,1448],"nevada-2":[1800,1200],"nevada-3":[1800,1200],"oregon-crater-lake":[1800,1200],"p0057":[1000,667],"p0120":[667,1000],"p0123":[667,1000],"p0129":[667,1000],"p0850":[750,1000],"p0873":[750,1000],"p1111":[1000,667],"p1114":[1000,667],"p1318":[667,1000],"p1387":[667,1000],"p1392":[667,1000],"p1396":[667,1000],"p1400":[667,1000],"prints-autumn-meadow":[1536,2304],"prints-blue-lake-firs":[1536,2304],"prints-ceramic-mirror":[1536,2304],"prints-lake-shore-pines":[1536,2304],"prints-misty-headland":[2730,1536],"prints-oaxaca-hotel-market":[1536,2304],"prints-p01":[1440,1800],"prints-p15":[1067,1600],"prints-p16":[900,1600],"prints-p17":[900,1600],"prints-p18":[1067,1600],"prints-p19":[1067,1600],"prints-p20":[1050,1575],"prints-p21":[1067,1600],"prints-p22":[1067,1600],"prints-p23":[1067,1600],"prints-p24":[1054,1581],"prints-p25":[1067,1600],"prints-p26":[1067,1600],"prints-p27":[1067,1600],"prints-p28":[1052,1578],"prints-p29":[1067,1600],"prints-p30":[1536,2304],"prints-p31":[1066,1600],"prints-p32":[1067,1600],"prints-p33":[1067,1600],"prints-p35":[825,1238],"prints-p36":[1037,1555],"prints-p37":[863,1294],"prints-p38":[1600,1067],"prints-p40":[1035,1552],"prints-p42":[1052,1578],"prints-p44":[1591,895],"prints-p45":[1067,1600],"prints-p46":[1504,906],"prints-p47":[1054,1581],"prints-p48":[1557,1038],"prints-p50":[1067,1600],"prints-p51":[1037,1557],"prints-p52":[897,1346],"prints-p53":[1067,1600],"prints-p54":[1059,1588],"prints-p55":[1067,1600],"prints-p56":[831,1245],"prints-p57":[1053,1580],"prints-p58":[968,1451],"prints-p59":[1067,1600],"prints-p60":[1059,1588],"prints-p61":[1059,1588],"prints-p62":[1065,1597],"prints-p63":[1065,1598],"prints-p64":[1067,1600],"prints-p65":[1067,1600],"prints-p66":[1062,1593],"prints-p67":[1017,1526],"prints-p68":[1067,1600],"prints-p69":[1009,1513],"prints-p70":[1067,1600],"prints-p71":[951,1427],"prints-p72":[1041,1561],"prints-p73":[845,1267],"prints-p74":[1043,1565],"prints-p75":[1067,1600],"prints-p76":[939,1408],"prints-p77":[1067,1600],"prints-p78":[1036,1470],"prints-p79":[900,1600],"prints-p80":[900,1600],"prints-p81":[1033,1549],"prints-p82":[900,1600],"prints-p83":[1067,1600],"prints-p84":[1536,2048],"prints-p86":[1536,2190],"prints-p87":[1536,2304],"prints-p88":[1591,2048],"prints-p91":[1536,2302],"prints-p92":[2400,1350],"prints-p94":[1536,2302],"prints-p96":[1536,2302],"prints-p98":[1536,2302],"prints-sandstone-cliff-valley":[1536,2304],"prints-shark-fin-cove-surf":[1536,2302],"prints-tahoe-pine-road":[1536,2048],"prints-tortillas":[1536,2304],"utah-lake":[1800,1200]};
+const P = (file, alt, ar, place) => { const d = DIM[file] || [0, 0], small = Math.min(d[0], d[1]) > 900;
+  return { src: "img/" + file + ".jpg", alt, ar, place,
+    set: small ? `img/s/${file}.jpg ${Math.round(d[0] * 800 / Math.min(d[0], d[1]))}w, img/${file}.jpg ${d[0]}w` : "" }; };
+/* The browser picks the lighter copy or the full photo from the width the photo is shown at ("sizes") and the screen's pixel density. */
+const ss = (p, sizes) => p.set ? ` srcset="${p.set}" sizes="${sizes}"` : "";
+const SZ = { wide: "(max-width: 809px) 100vw, 1104px", half: "(max-width: 809px) 100vw, 552px", third: "(max-width: 809px) 100vw, 352px", quarter: "(max-width: 809px) 50vw, 258px", cover: "(max-width: 809px) 100vw, 658px", print: "(max-width: 809px) 50vw, 400px" };
 const SERIES = [
   { slug: "outdoors", place: "The Great Outdoors",
     intro: "Coastlines, deserts, lakes and mountains.",
@@ -312,7 +319,7 @@ const HOME = [
 ];
 const num = n => String(n).padStart(2, "0");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const ph = (p, cls = "", eager, pos) => `<div class="ph ${cls}"><img src="${p.src}" alt="${esc(p.alt)}" loading="${eager ? "eager" : "lazy"}"${pos ? ` style="object-position: ${pos}"` : ""}></div>`;
+const ph = (p, cls = "", eager, pos, sizes = SZ.half) => `<div class="ph ${cls}"><img src="${p.src}"${ss(p, sizes)} alt="${esc(p.alt)}" loading="${eager ? "eager" : "lazy"}"${pos ? ` style="object-position: ${pos}"` : ""}></div>`;
 const BIO = "I’m Kevin, a photographer based in San Francisco.";
 const YEARS = "Select works";
 
@@ -347,7 +354,8 @@ const views = {
     /* Columns adapt to the number of photos: up to four sit in one row, more run in three columns (two on a phone). Each photo goes to the shortest column. */
     const n = s.photos.length, cols = phoneMq.matches ? Math.min(n, 2) : (n <= 4 ? n : 3);
     const colH = Array(cols).fill(0), colHtml = Array(cols).fill("");
-    const shot = (p, eager, i) => `<button type="button" class="shot" data-shot="${i}" style="--ar: ${p.ar || 1.5}" aria-label="View larger: ${esc(p.alt)}"><img src="${p.src}" alt="${esc(p.alt)}" loading="${eager ? "eager" : "lazy"}"></button>`;
+    const msz = phoneMq.matches ? `calc((100vw - 48px) / ${cols || 1})` : `calc((min(100vw, 1200px) - 96px) / ${cols || 1})`;
+    const shot = (p, eager, i) => `<button type="button" class="shot" data-shot="${i}" style="--ar: ${p.ar || 1.5}" aria-label="View larger: ${esc(p.alt)}"><img src="${p.src}"${ss(p, i ? msz : SZ.cover)} alt="${esc(p.alt)}" loading="${eager ? "eager" : "lazy"}"></button>`;
     const hh = p => 1 / (p.ar || 1.5) + 0.04, colP = colH.map(() => []);
     s.photos.forEach((p, i) => { const c = colH.indexOf(Math.min(...colH)); colH[c] += hh(p); colP[c].push([p, i + 1]); });
     /* Even out the column ends: move or swap the last photos of the tallest and shortest columns while that helps. */
@@ -379,12 +387,12 @@ const views = {
       <h1 class="serif big">Capturing the fleeting moments.</h1>
       <p>Landscapes, cities, food and people.</p>
     </section>
-    ${HOME.map((g, i) => { const s = SERIES[i], ps = g.alts.map(byAlt), link = (p, cls, eager, pos) => `<a href="#${s.slug}">${ph(p, cls, eager, pos)}</a>`;
+    ${HOME.map((g, i) => { const s = SERIES[i], ps = g.alts.map(byAlt), link = (p, cls, eager, pos, sizes) => `<a href="#${s.slug}">${ph(p, cls, eager, pos, sizes)}</a>`;
       return `<section class="esec">
       <div class="etxt"><span class="label">${num(i + 1)}</span><h2 class="serif">${s.place}</h2><p class="soft">${s.intro}</p><a class="underlined" href="#${s.slug}">View series</a></div>
-      ${g.kind === "big3" ? `${link(ps[0], "r-ewide", true, g.pos)}<div class="e3">${ps.slice(1).map((p, k) => link(p, "", false, (g.tpos || [])[k])).join("")}</div>`
-        : g.kind === "big" ? link(ps[0], "r-ewide", false, g.pos)
-        : `<div class="e4 ${g.kind === "tall4" ? "tall" : "sq"}">${ps.map(p => link(p, "")).join("")}</div>`}
+      ${g.kind === "big3" ? `${link(ps[0], "r-ewide", true, g.pos, SZ.wide)}<div class="e3">${ps.slice(1).map((p, k) => link(p, "", false, (g.tpos || [])[k], SZ.third)).join("")}</div>`
+        : g.kind === "big" ? link(ps[0], "r-ewide", false, g.pos, SZ.wide)
+        : `<div class="e4 ${g.kind === "tall4" ? "tall" : "sq"}">${ps.map(p => link(p, "", false, "", SZ.quarter)).join("")}</div>`}
     </section>`; }).join("")}
     <section class="about-strip">
       <p class="label">Behind the camera</p>
@@ -410,7 +418,7 @@ const views = {
     </section>
     ${PRINTS.map((g, i) => `<section class="pgroup">
       <div class="ptxt"><span class="label">${num(i + 1)}</span><h2 class="serif">${g.series.place}</h2><a class="underlined" href="#${g.series.slug}">View the full series</a></div>
-      <div class="pcards">${g.items.map(p => `<a class="card" href="#contact">${ph(p, "", i < 1)}<h3 class="serif">${p.title}</h3><span class="underlined">Ask about this print</span></a>`).join("")}</div>
+      <div class="pcards">${g.items.map(p => `<a class="card" href="#contact">${ph(p, "", i < 1, "", SZ.print)}<h3 class="serif">${p.title}</h3><span class="underlined">Ask about this print</span></a>`).join("")}</div>
     </section>`).join("")}
     ${foot()}`,
 
