@@ -154,7 +154,7 @@ a:hover .ph img { transform: scale(1.02); }
 .split > .label { padding-top: 3px; }
 .split .body { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
 .split .body p { max-width: 520px; }
-.split .facts { margin-top: 22px; }
+.split .facts { margin-top: 22px; } .split .body > .facts:first-child { margin-top: 0; }
 .cta { display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; padding-block: 56px; }
 .cta h2 { font-size: 36px; line-height: 42px; }
 .cta a { padding-block: 11px; }
@@ -396,7 +396,6 @@ const views = {
     <section class="split about">
       ${ph(P("kevin-lee", "Kevin Lee, smiling, in a white T-shirt"), "r-me", true)}
       <div class="body">
-        <p>${BIO}</p>
         <div class="facts">${fact("Based in", "San Francisco")}${fact("Available for", "Commissions and prints")}${fact("Instagram", `<a href="https://www.instagram.com/justfleeting/" target="_blank" rel="noopener">@justfleeting</a>`)}</div>
       </div>
     </section>
