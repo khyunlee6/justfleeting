@@ -66,13 +66,6 @@ The Prints page is grouped by the same four series as the gallery, in the same o
 group shows a few photographs with a title and an "Ask about this print" link, and a link
 to the full series. There is no print details section (paper, sizes, price, shipping).
 
-## Story structure (draft, mock-up only)
-
-Kevin is still developing a narrative about people, places, food and moments. A draft of it
-lives on the "Editorial" boards of the mock-up as four chapters whose titles read as one
-sentence: "It starts with a place." "Then the people in it." "What was on the table."
-"And the moments in between." It is not on the live site. Do not move it there unless Kevin asks.
-
 ## Photographs
 
 - Originals are on Kevin's "One Touch" external drive. Never edit or delete originals.
