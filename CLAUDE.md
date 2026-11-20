@@ -1,7 +1,9 @@
 # Kevin Lee Photography: working rules for Claude
 
 This repository is Kevin Lee's personal photography site. It is published with GitHub Pages
-from the `main` branch at https://khyunlee6.github.io/justfleeting/.
+from the `main` branch at https://justfleeting.com (custom domain; the `CNAME` file in
+the repository root sets it, so never remove that file). DNS is on Cloudflare, set to
+"DNS only".
 
 ## What is here
 
