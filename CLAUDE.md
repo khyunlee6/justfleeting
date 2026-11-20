@@ -45,7 +45,8 @@ editorial layout.
 ## Gallery and series pages
 
 - The gallery is organised by place. Each series is one place (Nevada, California, Kauai,
-  Oregon, Utah, Colorado, Mexico, Argentina, Iceland, Korea, Japan, Elsewhere).
+  Oregon, Utah, Colorado, Mexico, Argentina, Iceland, Korea, Japan, Australia, New Zealand,
+  Croatia, Canada, Elsewhere).
 - A series is named by its place only. There are no taglines.
 - Each series page shows a cover, then every other photo in a mosaic of columns at the
   photo's own proportions (three columns on desktop and tablet, two on phone).
