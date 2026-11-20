@@ -39,26 +39,32 @@ from the `main` branch at https://khyunlee6.github.io/justfleeting/.
 
 The home page uses the original layout from Kevin's Framer design: the headline "Slowing the
 world down, long enough to hold a glimmer.", two offset photos, one wide photo, a fourth
-series beside its photo, then a short "Behind the camera" strip. It is not the centred
-editorial layout.
+series beside its photo, then a short "Behind the camera" strip. The four photos are the
+covers of the four gallery collections, in gallery order. It is not the centred editorial layout.
 
 ## Gallery and series pages
 
-- The gallery is organised by place. Each series is one place (Nevada, California, Kauai,
-  Oregon, Utah, Colorado, Mexico, Argentina, Iceland, Korea, Japan, Elsewhere).
-- A series is named by its place only. There are no taglines.
+- The gallery is organised by type of photograph, not by place. There are four collections,
+  in this order: The Great Outdoors, Urban Life, Food, People.
+- Each collection has a one-line tagline that says plainly what is in the photographs.
+  Do not list places on the series page. The place of a photo is shown only in the photo
+  viewer, when someone opens that photo.
+- Photos are never cropped on series pages. The cover and every photo in the mosaic are
+  shown at their own proportions.
+- The site is about the work. Keep text short. Do not add narrative or story text to pages.
 - Each series page shows a cover, then every other photo in a mosaic of columns at the
-  photo's own proportions (three columns on desktop and tablet, two on phone).
-- "Elsewhere" holds photos whose place is not known yet. Ask Kevin before guessing a place.
-- Kevin sorts photos in the folder "Website photos (selected)" on his Desktop, one folder
-  per place. When he asks, read that folder and make the mock-up and the site match it.
+  photo's own proportions. The number of columns follows the number of photos: up to four
+  photos sit side by side in one row, five or more run in three columns (two on phone).
+  Each photo goes into whichever column is shortest, so the columns end at about the same height.
+- A photo belongs to exactly one collection. If it is not clear which, ask Kevin.
+- Kevin sorts photos in the folder "Website photos (selected)" on his Desktop. When he asks,
+  read that folder and make the mock-up and the site match it.
 
-## Story structure (draft, mock-up only)
+## Prints page
 
-Kevin is still developing a narrative about people, places, food and moments. A draft of it
-lives on the "Editorial" boards of the mock-up as four chapters whose titles read as one
-sentence: "It starts with a place." "Then the people in it." "What was on the table."
-"And the moments in between." It is not on the live site. Do not move it there unless Kevin asks.
+The Prints page is grouped by the same four series as the gallery, in the same order. Each
+group shows a few photographs with a title and an "Ask about this print" link, and a link
+to the full series. There is no print details section (paper, sizes, price, shipping).
 
 ## Photographs
 
