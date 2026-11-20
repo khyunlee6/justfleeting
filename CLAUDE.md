@@ -60,6 +60,12 @@ covers of the four gallery collections, in gallery order. It is not the centred 
 - Kevin sorts photos in the folder "Website photos (selected)" on his Desktop. When he asks,
   read that folder and make the mock-up and the site match it.
 
+## Prints page
+
+The Prints page is grouped by the same four series as the gallery, in the same order. Each
+group shows a few photographs with a title and an "Ask about this print" link, and a link
+to the full series. There is no print details section (paper, sizes, price, shipping).
+
 ## Story structure (draft, mock-up only)
 
 Kevin is still developing a narrative about people, places, food and moments. A draft of it
