@@ -32,6 +32,7 @@ from the `main` branch at https://khyunlee6.github.io/justfleeting/.
 - Plain, specific sentences in the first person. Avoid lists of three, "drawn to",
   "this is a space for", and other stock website phrases.
 - Only describe what the photographs show. Do not invent facts about Kevin.
+- Do not name camera models or other gear anywhere on the site.
 - Text Kevin has not written yet stays as a bracketed placeholder, for example `[YOUR PAPER]`.
 - Photo slots without a photo stay as labelled placeholders, for example `[ADD PHOTO: FOOD 1]`.
 
@@ -39,7 +40,7 @@ from the `main` branch at https://khyunlee6.github.io/justfleeting/.
 
 The home page is the centred editorial layout (formerly the "Editorial edition" of the
 mock-up). It is the only home page; the older layout with two offset photos is gone.
-It has the centred headline "Slowing the world down, long enough to hold a glimmer.", then
+It has the centred headline "Capturing the fleeting moments.", then
 one block per series in gallery order (number, title, tagline, "View series", and a few
 photos that link to the series), then a short "Behind the camera" strip.
 
@@ -63,7 +64,8 @@ photos that link to the series), then a short "Behind the camera" strip.
 
 ## Prints page
 
-The Prints page is grouped by the same four series as the gallery, in the same order. Each
+The Prints page is grouped by series, in gallery order: The Great Outdoors, then Travel and
+Urban. There are no Food or People groups: those photographs are not offered as prints. Each
 group shows a few photographs with a title and an "Ask about this print" link, and a link
 to the full series. There is no print details section (paper, sizes, price, shipping).
 
