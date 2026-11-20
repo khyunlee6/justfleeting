@@ -46,8 +46,11 @@ covers of the four gallery collections, in gallery order. It is not the centred 
 
 - The gallery is organised by type of photograph, not by place. There are four collections,
   in this order: The Great Outdoors, Urban Life, Food, People.
-- Each collection has a one-line tagline that says plainly what is in the photographs, and a
-  small line listing the places the photographs were taken.
+- Each collection has a one-line tagline that says plainly what is in the photographs.
+  Do not list places on the series page. The place of a photo is shown only in the photo
+  viewer, when someone opens that photo.
+- Photos are never cropped on series pages. The cover and every photo in the mosaic are
+  shown at their own proportions.
 - The site is about the work. Keep text short. Do not add narrative or story text to pages.
 - Each series page shows a cover, then every other photo in a mosaic of columns at the
   photo's own proportions. The number of columns follows the number of photos: up to four
