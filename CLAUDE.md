@@ -37,15 +37,16 @@ from the `main` branch at https://khyunlee6.github.io/justfleeting/.
 
 ## Home page
 
-The home page uses the original layout from Kevin's Framer design: the headline "Slowing the
-world down, long enough to hold a glimmer.", two offset photos, one wide photo, a fourth
-series beside its photo, then a short "Behind the camera" strip. The four photos are the
-covers of the four gallery collections, in gallery order. It is not the centred editorial layout.
+The home page is the centred editorial layout (formerly the "Editorial edition" of the
+mock-up). It is the only home page; the older layout with two offset photos is gone.
+It has the centred headline "Slowing the world down, long enough to hold a glimmer.", then
+one block per series in gallery order (number, title, tagline, "View series", and a few
+photos that link to the series), then a short "Behind the camera" strip.
 
 ## Gallery and series pages
 
 - The gallery is organised by type of photograph, not by place. There are four collections,
-  in this order: The Great Outdoors, Urban Life, Food, People.
+  in this order: The Great Outdoors, Travel and Urban, Food, People.
 - Each collection has a one-line tagline that says plainly what is in the photographs.
   Do not list places on the series page. The place of a photo is shown only in the photo
   viewer, when someone opens that photo.
