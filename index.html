@@ -249,6 +249,7 @@ form { display: flex; flex-direction: column; gap: 28px; margin: 0; }
   .mosaic, .mcol { gap: 14px; } .mosaic.solo-tall { max-width: none; }
   .back { padding-block: 10px 22px; }
   .ehead { padding-block: 36px; gap: 10px; } .ehead .big { font-size: 36px; }
+  .mast .logo .sub { letter-spacing: .26em; margin-right: -.26em; }
   .esec { padding-block: 36px; } .etxt { margin-bottom: 24px; } .etxt h2 { font-size: 30px; line-height: 36px; } .etxt p { line-height: 24px; }
   .e3 { grid-template-columns: 1fr; gap: 16px; margin-top: 16px; } .e4 { grid-template-columns: 1fr 1fr; gap: 16px; } .r-ewide { aspect-ratio: 3 / 2; }
   .efirst { padding-bottom: 36px; } .r-ewide { aspect-ratio: 3 / 2; } .r-me { width: 100%; }
@@ -315,10 +316,10 @@ const ph = (p, cls = "", eager) => `<div class="ph ${cls}"><img src="${p.src}" a
 const BIO = "I’m Kevin, a photographer based in San Francisco.";
 const YEARS = "Select works";
 
-const MONO = `<span aria-hidden="true">K</span><i class="bar" aria-hidden="true"></i><em aria-hidden="true">L</em>`;
+const MONO = `<span aria-hidden="true">J</span><i class="bar" aria-hidden="true"></i><em aria-hidden="true">F</em>`;
 const mast = (cur, home) => `
   <header class="mast">
-    <a class="name serif logo" href="#home" aria-label="Kevin Lee, home"><span class="mono">${MONO}</span><span class="sub" aria-hidden="true">Kevin Lee</span></a>
+    <a class="name serif logo" href="#home" aria-label="justfleeting, home"><span class="mono">${MONO}</span><span class="sub" aria-hidden="true">justfleeting</span></a>
     <nav class="nav" aria-label="Main">
       ${home ? `<span class="label role">Travel and lifestyle photographer</span>` : ""}
       ${[["gallery", "Gallery"], ["prints", "Prints"], ["about", "About"], ["contact", "Contact"]].map(([h, t]) => `<a href="#${h}"${cur === h ? ' aria-current="page"' : ""}>${t}</a>`).join("")}
@@ -392,10 +393,11 @@ const views = {
     ${foot()}`,
 
   about: () => `${mast("about")}
-    <section class="phead eyebrow-title"><p class="label">Behind the camera</p><h1 class="serif big">I photograph the outdoors, city streets, food and people.</h1></section>
+    <section class="phead eyebrow-title"><p class="label">Behind the camera</p><h1 class="serif big">Kevin Lee</h1></section>
     <section class="split about">
       ${ph(P("kevin-lee", "Kevin Lee, smiling, in a white T-shirt"), "r-me", true)}
       <div class="body">
+        <p>I photograph the outdoors, city streets, food and people.</p>
         <div class="facts">${fact("Based in", "San Francisco")}${fact("Available for", "Commissions and prints")}${fact("Instagram", `<a href="https://www.instagram.com/justfleeting/" target="_blank" rel="noopener">@justfleeting</a>`)}</div>
       </div>
     </section>
@@ -479,7 +481,7 @@ const svg = k => `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" st
 function drawLb() {
   const p = shots[lbI];
   lb.innerHTML = `
-    <div class="top"><span class="name serif mono" role="img" aria-label="Kevin Lee">${MONO}</span><button type="button" class="tbtn" data-lb="close">Close ${svg("x")}</button></div>
+    <div class="top"><span class="name serif mono" role="img" aria-label="justfleeting">${MONO}</span><button type="button" class="tbtn" data-lb="close">Close ${svg("x")}</button></div>
     <div class="stage" data-lb="close"><img src="${p.src}" alt="${esc(p.alt)}"></div>
     <div class="bottom">
       <button type="button" class="tbtn" data-lb="prev" aria-label="Previous photo">${svg("l")}<span class="word">Previous</span></button>
